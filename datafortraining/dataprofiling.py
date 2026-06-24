@@ -1,3 +1,4 @@
+# Verifying the dataset distribution all over the dataset, including all the parameters as well as action type, intent and sub intent, platform type.
 import json
 import re
 from collections import Counter, defaultdict
@@ -89,9 +90,8 @@ def profile_dataset(dataset):
     lines.append(f"   Unresolved placeholders: {unresolved} ({unresolved/n:.2%})\n")
     lines.append(f"   Noise‑injected sentences: {noise_detected} ({noise_detected/n:.2%})\n\n")
 
-    # ---------------------------------------------------------
+
     # 3. Parameter Profiling
-    # ---------------------------------------------------------
     param_counter = Counter()
     param_type_counter = defaultdict(Counter)
     ipv4_counter = Counter()
@@ -126,9 +126,8 @@ def profile_dataset(dataset):
         lines.append(f"   {k:20s} min={min(values)} max={max(values)} mean={mean(values):.2f}\n")
     lines.append("\n")
 
-    # ---------------------------------------------------------
+ 
     # 4. Duplicate Detection
-    # ---------------------------------------------------------
     nl_counter = Counter(e.get("natural_language", "") for e in dataset)
     dup_sentences = sum(1 for _, c in nl_counter.items() if c > 1)
     max_dup = max(nl_counter.values()) if nl_counter else 0
@@ -138,9 +137,8 @@ def profile_dataset(dataset):
     lines.append(f"   Sentences with duplicates: {dup_sentences}\n")
     lines.append(f"   Max duplicates for a single sentence: {max_dup}\n\n")
 
-    # ---------------------------------------------------------
+    
     # 5. Outlier Detection
-    # ---------------------------------------------------------
     outliers = [l for l in lengths if l > mean(lengths) + 3 * pstdev(lengths)]
     lines.append("9) Outlier Detection:\n")
     lines.append(f"   Outlier sentences (>3σ): {len(outliers)}\n\n")
