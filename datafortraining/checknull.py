@@ -13,7 +13,7 @@ def check_none_values(dataset):
     total_none = 0
     samples_with_none = 0
 
-    report.append("=== NONE VALUE REPORT ===\n")
+  
     report.append(f"Total samples: {len(dataset)}\n\n")
 
     for entry in dataset:
@@ -32,7 +32,6 @@ def check_none_values(dataset):
             report.append(f"  Natural: {entry.get('natural_language')}\n")
             report.append(f"  None parameters: {none_fields}\n\n")
 
-    report.append("=== SUMMARY ===\n")
     report.append(f"Samples containing None: {samples_with_none}\n")
     report.append(f"Total None values found: {total_none}\n")
 

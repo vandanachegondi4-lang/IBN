@@ -1,0 +1,6 @@
+=== NONE VALUE REPORT ===
+Total samples: 5000
+
+=== SUMMARY ===
+Samples containing None: 0
+Total None values found: 0
