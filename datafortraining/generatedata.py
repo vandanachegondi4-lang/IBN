@@ -3,9 +3,7 @@ import random
 import uuid
 import re
 
-# ---------------------------------------------------------
-# Load JSON files
-# ---------------------------------------------------------
+# Load first the intent and policy templates
 def load_json(path):
     with open(path, "r") as f:
         return json.load(f)
@@ -13,11 +11,9 @@ def load_json(path):
 INTENT_TEMPLATES = load_json("datafortraining/intent_template.json")
 POLICY_TEMPLATES = load_json("datafortraining/policy_template.json")
 
-# ---------------------------------------------------------
-# Platform → Capability Mapping
-# ---------------------------------------------------------
+# Generate dataset based on the platform capabilites
 PLATFORM_CAPABILITIES = {
-    "HIOS": [
+    "hios": [
         "system_mgmt", "user_mgmt", "interface", "vlan", "mac_table",
         "port_security", "qos", "acl", "traffic_control", "lldp",
         "lldp_med", "spanning_tree", "lacp", "mrp", "hsr_prp",
@@ -27,14 +23,14 @@ PLATFORM_CAPABILITIES = {
         "firmware_file_mgmt", "usb_sd", "config_mgmt"
     ],
 
-    "HIEOS": [
+    "hieos": [
         "system_mgmt", "user_mgmt", "interface", "vlan", "mac_table",
         "port_security", "qos", "lldp", "lldp_med", "spanning_tree",
         "lacp", "routing", "dhcp", "dns", "syslog", "snmp",
         "monitoring", "poe", "firmware_file_mgmt", "config_mgmt"
     ],
 
-    "CLASSIC": [
+    "classic": [
         "system_mgmt", "user_mgmt", "interface", "vlan",
         "lldp", "spanning_tree", "routing", "dhcp",
         "dns", "syslog", "snmp"
@@ -57,11 +53,9 @@ PLATFORM_CAPABILITIES = {
     ]
 }
 
-# ---------------------------------------------------------
-# Platform-specific parameter constraints
-# ---------------------------------------------------------
+# Define platform specific constraints
 PLATFORM_PARAMETER_CONSTRAINTS = {
-    "HIOS": {
+    "hios": {
         "port_range": [f"1/{i}" for i in range(1, 25)],
         "mtu_range": (576, 9000),
         "qos_supported": True,
@@ -69,7 +63,7 @@ PLATFORM_PARAMETER_CONSTRAINTS = {
         "lldp_med_supported": True
     },
 
-    "HIEOS": {
+    "hieos": {
         "port_range": [f"1/{i}" for i in range(1, 17)],
         "mtu_range": (576, 9000),
         "qos_supported": True,
@@ -77,7 +71,7 @@ PLATFORM_PARAMETER_CONSTRAINTS = {
         "lldp_med_supported": True
     },
 
-    "CLASSIC": {
+    "classic": {
         "port_range": [f"1/{i}" for i in range(1, 9)],
         "mtu_range": (576, 1500),
         "qos_supported": False,
@@ -110,9 +104,7 @@ PLATFORM_PARAMETER_CONSTRAINTS = {
     }
 }
 
-# ---------------------------------------------------------
-# Load devices
-# ---------------------------------------------------------
+# Retrieve the device information from the devices_list.json file
 def load_devices(path="datafortraining/devices_list.json"):
     with open(path, "r") as f:
         data = json.load(f)
@@ -140,31 +132,28 @@ def load_devices(path="datafortraining/devices_list.json"):
 
     return devices
 
-# ---------------------------------------------------------
-# Action verbs
-# ---------------------------------------------------------
+# Define the verbs for each action type and created the three main actions to perform on the devices.
 VERBS = {
     "allow": ["configure", "enable", "set", "apply", "allow", "assign", "activate"],
     "deny": ["deny", "block", "disable", "remove", "clear", "reset", "deactivate"],
     "get": ["show", "display", "retrieve", "get", "fetch"]
 }
 
-# ---------------------------------------------------------
-# Noise injection
-# ---------------------------------------------------------
+# Define the different types of noises into the generated sentences to make it more natural and human-like
 NOISE_PREFIX = [
     "just to be clear,",
     "by the way,",
     "as far as I know,",
     "for this setup,",
     "if I understand correctly,"
+    "for your information"
 ]
 
 NOISE_MID = ["basically", "sort of", "kind of", "technically", "somehow"]
 NOISE_TRAIL = ["if possible", "when you get a chance", "as soon as you can", "whenever that works"]
 NOISE_REDUNDANT = ["go ahead and", "please make sure to", "you can just", "go on and"]
 NOISE_CONTEXT = ["for the maintenance window,", "as per earlier discussion,", "for the new deployment,"]
-
+# Inject noise into the generated sentence orderly and to distrubute the noise data equally
 def inject_noise(sentence):
     r = random.random()
     if r < 0.20:
@@ -184,12 +173,12 @@ def inject_noise(sentence):
         return sentence.replace(" ", "  ")
     return sentence
 
-# ---------------------------------------------------------
-# Placeholder value generator
-# ---------------------------------------------------------
+
+
 VLAN_NAMES = ["office", "iot", "guest", "camera", "prod", "dev", "lab"]
 TAG_MODES = ["tagged", "untagged"]
 
+# Generate a random value for a given parameter 
 def generate_value(param):
     if param == "vlan_id":
         return random.randint(1, 4094)
@@ -209,7 +198,7 @@ def generate_value(param):
     if param == "hostname":
         return f"sw-{random.randint(1, 999)}"
     if param == "timezone":
-        return random.choice(["UTC", "CET", "EST", "PST"])
+        return random.choice(["UTC", "CET", "EST", "PST", "IST", "JST", "CEST"])
     if param == "service_name":
         return random.choice(["ssh", "telnet", "http", "https", "snmp"])
 
@@ -250,7 +239,7 @@ def generate_value(param):
     if param == "ring_id":
         return random.randint(1, 64)
     if param == "protocol":
-        return random.choice(["hsr", "prp"])
+        return random.choice(["hsr", "prp","mrp"])
     if param == "priority":
         return random.choice([0, 4096, 8192, 16384, 32768, 61440])
 
@@ -291,9 +280,7 @@ def generate_value(param):
 
     return f"{param}_{random.randint(1,999)}"
 
-# ---------------------------------------------------------
-# Intent Generator
-# ---------------------------------------------------------
+# Generate the intent 
 class IntentGenerator:
     def __init__(self, devices):
         self.devices = devices
@@ -329,7 +316,7 @@ class IntentGenerator:
 
         action_word = random.choice(VERBS.get(action, ["do"]))
 
-        # PARAMETER GENERATION
+        # Generate parameters
         parameters = {
             "device": device,
             "platform": platform
@@ -353,7 +340,7 @@ class IntentGenerator:
             if ph not in parameters:
                 parameters[ph] = generate_value(ph)
 
-        # PLATFORM-SPECIFIC PARAMETER ENFORCEMENT
+        # pulling platform specific constraints
         rules = PLATFORM_PARAMETER_CONSTRAINTS[platform]
 
         if "port" in parameters:
@@ -374,7 +361,7 @@ class IntentGenerator:
             for p in ["policy_name", "tlv_type"]:
                 parameters.pop(p, None)
 
-        # REMOVE PARAMETERS NOT IN POLICY
+        # retrieve the parameters from the policy template and remove any parameters that are not in the intent
         required = policy["required_parameters"]
         optional = policy["optional_parameters"]
         allowed = set(required + optional + ["device", "platform", "port"])
@@ -383,11 +370,11 @@ class IntentGenerator:
             if p not in allowed:
                 parameters.pop(p)
 
-        # CLEAN TEMPLATE
+        
         for ph in ["tlv_type", "policy_name"]:
             if ph not in parameters:
                 template = template.replace("{" + ph + "}", "")
-
+        # Create the natural langauge sentence by formatting the template with the action and parameters
         natural = inject_noise(template.format(action=action_word, **parameters))
 
         return {
@@ -401,9 +388,6 @@ class IntentGenerator:
             "policy": policy
         }
 
-# ---------------------------------------------------------
-# Main
-# ---------------------------------------------------------
 if __name__ == "__main__":
     devices = load_devices("datafortraining/devices_list.json")
     generator = IntentGenerator(devices)
