@@ -250,6 +250,7 @@ pip install -r requirements.txt
 
 # Run the scripts in order
 python datafortraining/createdevicelist.py
+python datafortraining/ports.py
 python datafortraining/policygenerator.py
 python datafortraining/generatedata.py
 python datafortraining/datavalidation.py
