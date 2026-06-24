@@ -3,9 +3,9 @@ import subprocess
 import difflib
 import re
 
-MODEL = "phi3:mini"
+MODEL = "llama3.1"
 DATASET_PATH = "datafortraining/llama_training.jsonl"
-MAX_TESTS = 10
+MAX_TESTS = 20
 
 
 def query_model(instruction, user_input):

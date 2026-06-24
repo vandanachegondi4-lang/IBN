@@ -10,6 +10,7 @@ def load_json(path):
 
 INTENT_TEMPLATES = load_json("datafortraining/intent_template.json")
 POLICY_TEMPLATES = load_json("datafortraining/policy_template.json")
+INTENT_ABBREVIATIONS = load_json("datafortraining/abbreviations.json")
 
 # Generate dataset based on the platform capabilites
 PLATFORM_CAPABILITIES = {
@@ -153,6 +154,10 @@ NOISE_MID = ["basically", "sort of", "kind of", "technically", "somehow"]
 NOISE_TRAIL = ["if possible", "when you get a chance", "as soon as you can", "whenever that works"]
 NOISE_REDUNDANT = ["go ahead and", "please make sure to", "you can just", "go on and"]
 NOISE_CONTEXT = ["for the maintenance window,", "as per earlier discussion,", "for the new deployment,"]
+def get_intent_term(intent_type):
+    """Randomly returns abbreviation, acronym, or full form for noise injection."""
+    terms = INTENT_ABBREVIATIONS.get(intent_type, [intent_type])
+    return random.choice(terms)
 # Inject noise into the generated sentence orderly and to distrubute the noise data equally
 def inject_noise(sentence):
     r = random.random()
@@ -307,7 +312,7 @@ class IntentGenerator:
 
         if not valid_actions:
             action = random.choice(list(actions_dict.keys()))
-            template = "{action} " + intent_type
+            template = "{action} " + get_intent_term(intent_type)
             policy = POLICY_TEMPLATES[intent_type][sub_intent_type][action]
         else:
             action = random.choice(valid_actions)
@@ -369,14 +374,16 @@ class IntentGenerator:
         for p in list(parameters.keys()):
             if p not in allowed:
                 parameters.pop(p)
-
+ 
         
         for ph in ["tlv_type", "policy_name"]:
             if ph not in parameters:
                 template = template.replace("{" + ph + "}", "")
-        # Create the natural langauge sentence by formatting the template with the action and parameters
-        natural = inject_noise(template.format(action=action_word, **parameters))
-
+        # Create the natural language sentence by formatting the template with the action and parameters
+            natural_language_str = template.format(action=action_word, **parameters)
+        #  replace any leftover intent_type mention in the sentence with abbreviation/full form
+            natural_language_str = natural_language_str.replace(intent_type.replace("_", " "),get_intent_term(intent_type),1)
+            natural = inject_noise(natural_language_str)
         return {
             "uid": str(uuid.uuid4()),
             "natural_language": natural,

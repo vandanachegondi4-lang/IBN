@@ -1,5 +1,4 @@
 # IBN Workflow — Intent Dataset Generation
-
 A pipeline for generating high-quality, platform-aware datasets to train LLMs (LLaMA-8B, Phi, Gemma) to convert natural-language network intents into structured JSON.
 
 ---
@@ -192,7 +191,7 @@ Three scripts handle quality checks:
 
 ### 8. Pre-Training Dataset Test (Ollama)
 
-Before fine-tuning, the dataset is tested against a base model (`phi3:mini`) via [Ollama](https://ollama.com) using `basemodelcheck.py` to verify:
+After converting the dataset to JSONL, it is tested against a base model (`phi3:mini` or `llama3.2`) via [Ollama](https://ollama.com) using `basemodelcheck.py` to verify:
 
 - Natural-language clarity
 - JSON formatting consistency
@@ -234,33 +233,171 @@ Two methods are used:
 
 ---
 
-## Running Scripts from GitLab
+## Ollama Base Model Testing
+
+Before fine-tuning, `basemodelcheck.py` tests the generated dataset against a local base model using [Ollama](https://ollama.com). This verifies natural-language clarity, JSON formatting, and instruction consistency — without any training cost.
 
 ---
 
-### Run Manually (Clone & Execute)
+### Step 1 — Install Ollama
+
+#### Windows
+
+Requires Windows 10 or later. No Administrator rights needed.
+
+**Option A — GUI installer (recommended):**
+
+1. Download `OllamaSetup.exe` from [ollama.com/download/windows](https://ollama.com/download/windows)
+2. Double-click and follow the on-screen prompts
+3. Ollama starts automatically in the background (system tray icon, bottom-right)
+
+**Option B — PowerShell:**
+
+```powershell
+irm https://ollama.com/install.ps1 | iex
+```
+
+**Verify:**
+
+```powershell
+ollama --version
+```
+
+#### Linux
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+**Verify:**
+
+```bash
+ollama --version
+
+# Check GPU is detected (optional)
+OLLAMA_DEBUG=1 ollama serve 2>&1 | grep -i "cuda\|rocm"
+```
+
+---
+
+### Step 2 — Pull the Models
+
+#### phi3:mini — lightweight, recommended for quick testing
+
+| | Windows | Linux |
+|---|---|---|
+| Pull | `ollama pull phi3:mini` | `ollama pull phi3:mini` |
+
+#### LLaMA 3.1 — primary model for this project
+
+**Windows (PowerShell):**
+
+```powershell
+ollama pull llama3.1:3b   # lightweight (3B)
+ollama pull llama3.1      # full (8B) — recommended
+```
+
+**Linux:**
+
+```bash
+ollama pull llama3.1:3b   # lightweight (3B)
+ollama pull llama3.1     # full (8B) — recommended
+```
+
+---
+
+### Hardware Requirements
+
+| Model | RAM (min) | VRAM (GPU) | Disk |
+|---|---|---|---|
+| `phi3:mini` | 8 GB | ~2–3 GB | ~2.3 GB |
+| `llama3.2:3b` | 8 GB | ~2–3 GB | ~2.0 GB |
+| `llama3.2` (8B) | 16 GB | ~5–6 GB | ~4.7 GB |
+
+> **No GPU?** Ollama runs on CPU-only — models just run slower. Small models like `phi3:mini` are usable on 8 GB RAM without a GPU.
+
+> **GPU tip:** NVIDIA is fully supported on both platforms. AMD (ROCm) is supported on Linux only — not on Windows.
+
+---
+
+### Step 3 — Run the Base Model Test
+
+**Windows:**
+
+```powershell
+python datafortraining/basemodelcheck.py
+```
+
+**Linux:**
+
+```bash
+python3 datafortraining/basemodelcheck.py
+```
+
+The script sends samples from `intent_dataset.json` to the local model and checks:
+
+- Whether the model produces valid JSON output
+- Whether natural-language inputs are unambiguous
+- Whether instruction formatting is consistent
+
+> **Note:** This is a **clarity and formatting check**, not a measure of fine-tuning quality. The base model is not trained on our dataset — it just helps catch badly formed examples before invest time in PEFT.
+
+---
+
+### Step 4 — Manual Spot-Check (optional)
+
+**Windows (PowerShell):**
+
+```powershell
+ollama run phi3:mini "configure vlan 10 tagged on brs40-1 port 1/1"
+ollama run llama3.2 "enable snmp on brs40-1"
+```
+
+**Linux:**
+
+```bash
+ollama run phi3:mini "configure vlan 10 tagged on brs40-1 port 1/1"
+ollama run llama3.1 "enable snmp on brs40-1"
+```
+
+---
+
+### Troubleshooting
+
+| Problem | Windows Fix | Linux Fix |
+|---|---|---|
+| `ollama` not recognized | Open a new terminal — PATH needs a restart | Run `source ~/.bashrc` or open a new terminal |
+| Model won't download | Add Ollama to Windows Defender exclusions | Check firewall: `sudo ufw allow 11434` |
+| Out of memory | Switch to `phi3:mini` or `llama3.1:3b` | Switch to `phi3:mini` or `llama3.1:3b` |
+| GPU not detected | Update NVIDIA drivers | Run `nvidia-smi` to verify driver; CUDA 525+ required |
+| Slow inference | Expected on CPU-only — use a GPU for speed | Same; AMD GPU needs ROCm drivers installed |
+
+---
+
+## Running Scripts from GitLab
+
+Clone the repo and run the scripts directly in order.
 
 ```bash
 # Clone the repository
-git clone https://github.com/vandanachegondi4-lang/IBN.git
-cd IBN
+git clone https://gitlab.com/your-username/your-repo.git
+cd your-repo
 
 # Install dependencies
 pip install -r requirements.txt
 
 # Run the scripts in order
 python datafortraining/createdevicelist.py
-python datafortraining/ports.py
 python datafortraining/policygenerator.py
 python datafortraining/generatedata.py
 python datafortraining/datavalidation.py
 python datafortraining/checknull.py
 python datafortraining/dataprofiling.py
-python datafortraining/basemodelcheck.py
 python datafortraining/convertjsonl.py
+python datafortraining/basemodelcheck.py
 ```
 
-
+---
 
 ## Workflow Summary
 
@@ -277,10 +414,10 @@ generatedata.py  ──► intent_dataset.json
 datavalidation.py + checknull.py + dataprofiling.py
        │
        ▼
-  basemodelcheck.py (phi3:mini via Ollama)
+convertjsonl.py  ──► llama_training.jsonl
        │
        ▼
-convertjsonl.py  ──► llama_training.jsonl
+  basemodelcheck.py (phi3:mini / llama3.2 via Ollama)
        │
        ▼
   PEFT fine-tuning (LoRA / QLoRA)

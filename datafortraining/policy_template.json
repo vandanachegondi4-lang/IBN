@@ -40,8 +40,8 @@
                     "netmask"
                 ],
                 "constraints": {
-                    "netmask": "ipv4",
-                    "ip_address": "ipv4"
+                    "ip_address": "ipv4",
+                    "netmask": "ipv4"
                 }
             },
             "deny": {
@@ -166,13 +166,13 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "username": "string",
                     "role": [
                         "admin",
                         "operator",
                         "guest",
                         "read-only"
-                    ]
+                    ],
+                    "username": "string"
                 }
             },
             "deny": {
@@ -254,13 +254,13 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "username": "string",
                     "role": [
                         "admin",
                         "operator",
                         "guest",
                         "read-only"
-                    ]
+                    ],
+                    "username": "string"
                 }
             },
             "deny": {
@@ -506,8 +506,8 @@
                     "vlan_name"
                 ],
                 "constraints": {
-                    "vlan_name": "string",
-                    "vlan_id": "1-4094"
+                    "vlan_id": "1-4094",
+                    "vlan_name": "string"
                 }
             },
             "deny": {
@@ -564,12 +564,12 @@
                     "tagging_mode"
                 ],
                 "constraints": {
-                    "port": "string-or-port-range",
-                    "vlan_id": "1-4094",
                     "tagging_mode": [
                         "tagged",
                         "untagged"
-                    ]
+                    ],
+                    "vlan_id": "1-4094",
+                    "port": "string-or-port-range"
                 }
             },
             "deny": {
@@ -612,8 +612,8 @@
                         "tagged",
                         "untagged"
                     ],
-                    "port": "string-or-port-range",
-                    "vlan_id": "1-4094"
+                    "vlan_id": "1-4094",
+                    "port": "string-or-port-range"
                 }
             },
             "deny": {
@@ -682,8 +682,8 @@
                 "optional_parameters": [],
                 "constraints": {
                     "macaddress": "mac",
-                    "port": "string-or-port-range",
-                    "vlan_id": "1-4094"
+                    "vlan_id": "1-4094",
+                    "port": "string-or-port-range"
                 }
             },
             "deny": {
@@ -720,8 +720,8 @@
                 "optional_parameters": [],
                 "constraints": {
                     "macaddress": "mac",
-                    "port": "string-or-port-range",
-                    "vlan_id": "1-4094"
+                    "vlan_id": "1-4094",
+                    "port": "string-or-port-range"
                 }
             },
             "get": {
@@ -899,8 +899,8 @@
                     "min_bandwidth"
                 ],
                 "constraints": {
-                    "qnumber": "0-7",
-                    "min_bandwidth": "1-100000"
+                    "min_bandwidth": "1-100000",
+                    "qnumber": "0-7"
                 }
             },
             "deny": {
@@ -963,8 +963,8 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "rate": "1-1000000",
-                    "port": "string-or-port-range"
+                    "port": "string-or-port-range",
+                    "rate": "1-1000000"
                 }
             },
             "deny": {
@@ -996,8 +996,8 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "rate": "1-1000000",
-                    "port": "string-or-port-range"
+                    "port": "string-or-port-range",
+                    "rate": "1-1000000"
                 }
             },
             "deny": {
@@ -1029,8 +1029,8 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "rate": "1-1000000",
-                    "port": "string-or-port-range"
+                    "port": "string-or-port-range",
+                    "rate": "1-1000000"
                 }
             },
             "deny": {
@@ -1065,8 +1065,8 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "destination": "string-or-path",
-                    "source": "string-or-ip"
+                    "source": "string-or-ip",
+                    "destination": "string-or-path"
                 }
             },
             "deny": {
@@ -1156,8 +1156,8 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "rate": "1-1000000",
-                    "port": "string-or-port-range"
+                    "port": "string-or-port-range",
+                    "rate": "1-1000000"
                 }
             },
             "deny": {
@@ -1231,8 +1231,8 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "rate": "1-1000000",
-                    "port": "string-or-port-range"
+                    "port": "string-or-port-range",
+                    "rate": "1-1000000"
                 }
             },
             "deny": {
@@ -1560,8 +1560,8 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "port": "string-or-port-range",
-                    "lag_id": "1-64"
+                    "lag_id": "1-64",
+                    "port": "string-or-port-range"
                 }
             },
             "deny": {
@@ -1596,8 +1596,8 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "port": "string-or-port-range",
-                    "lag_id": "1-64"
+                    "lag_id": "1-64",
+                    "port": "string-or-port-range"
                 }
             },
             "get": {
@@ -1674,13 +1674,13 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "ring_id": "1-64",
                     "role": [
                         "admin",
                         "operator",
                         "guest",
                         "read-only"
-                    ]
+                    ],
+                    "ring_id": "1-64"
                 }
             },
             "deny": {
@@ -1814,8 +1814,8 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "destination": "string-or-path",
                     "gateway": "ipv4",
+                    "destination": "string-or-path",
                     "netmask": "ipv4"
                 }
             },
@@ -2666,8 +2666,8 @@
                 ],
                 "optional_parameters": [],
                 "constraints": {
-                    "source_port": "string-or-port-range",
-                    "destination_port": "string-or-port-range"
+                    "destination_port": "string-or-port-range",
+                    "source_port": "string-or-port-range"
                 }
             },
             "deny": {
