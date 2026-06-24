@@ -380,8 +380,9 @@ Clone the repo and run the scripts directly in order.
 
 ```bash
 # Clone the repository
-git clone https://gitlab.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/vandanachegondi4-lang/IBN.git
+cd IBN
+
 
 # Install dependencies
 pip install -r requirements.txt
