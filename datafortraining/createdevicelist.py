@@ -1,7 +1,7 @@
 import json
 
 data = {
-    "HIOS": {
+    "hios": {
         "brs40-1": "192.168.100.113",
         "brs40-2": "192.168.100.112",
         "brs40-3": "192.168.100.111",
@@ -27,11 +27,11 @@ data = {
         "red25-2": "192.168.100.115"
     },
 
-    "CLASSIC": {
+    "classic": {
         "rs20-1": "192.168.100.116"
     },
 
-    "HIEOS": {
+    "hieos": {
         "lrs40-1": "192.168.100.101",
         "lrs40-2": "192.168.100.106"
     },
@@ -50,8 +50,7 @@ data = {
     }
 
 }
-
-with open("datafortraining/devices_list.json", "w") as f:
+with open("datafortraining/devices_list.json", "w", encoding="utf-8") as f:
     json.dump(data, f, indent=4)
 
 print("devices_list.json created.")
