@@ -62,13 +62,10 @@
     "multicast listener discovery"
   ],
   "industrial_protocols": [
-    "industrial protocols",
-    "industrial_protocols",
     "profinet",
     "modbus",
     "goose",
-    "dcp",
-    "industrial protocol"
+    "dcp"
   ],
   "interface": [
     "interface",

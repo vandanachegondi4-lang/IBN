@@ -3,16 +3,17 @@ import random
 import uuid
 import re
 
-# Load first the intent and policy templates
+# Load JSON helper
 def load_json(path):
     with open(path, "r") as f:
         return json.load(f)
 
+# Load templates
 INTENT_TEMPLATES = load_json("datafortraining/intent_template.json")
 POLICY_TEMPLATES = load_json("datafortraining/policy_template.json")
 INTENT_ABBREVIATIONS = load_json("datafortraining/abbreviations.json")
 
-# Generate dataset based on the platform capabilites
+# Platform capabilities
 PLATFORM_CAPABILITIES = {
     "hios": [
         "system_mgmt", "user_mgmt", "interface", "vlan", "mac_table",
@@ -23,20 +24,17 @@ PLATFORM_CAPABILITIES = {
         "industrial_protocols", "monitoring", "poe",
         "firmware_file_mgmt", "usb_sd", "config_mgmt"
     ],
-
     "hieos": [
         "system_mgmt", "user_mgmt", "interface", "vlan", "mac_table",
         "port_security", "qos", "lldp", "lldp_med", "spanning_tree",
         "lacp", "routing", "dhcp", "dns", "syslog", "snmp",
         "monitoring", "poe", "firmware_file_mgmt", "config_mgmt"
     ],
-
     "classic": [
         "system_mgmt", "user_mgmt", "interface", "vlan",
         "lldp", "spanning_tree", "routing", "dhcp",
         "dns", "syslog", "snmp"
     ],
-
     "raspberrypi": [
         "system_mgmt", "user_mgmt",
         "vlan",
@@ -44,17 +42,15 @@ PLATFORM_CAPABILITIES = {
         "snmp",
         "monitoring"
     ],
-
     "edge": [
         "system_mgmt", "monitoring"
     ],
-
     "bat": [
         "system_mgmt"
     ]
 }
 
-# Define platform specific constraints
+# Platform constraints
 PLATFORM_PARAMETER_CONSTRAINTS = {
     "hios": {
         "port_range": [f"1/{i}" for i in range(1, 25)],
@@ -63,7 +59,6 @@ PLATFORM_PARAMETER_CONSTRAINTS = {
         "poe_supported": True,
         "lldp_med_supported": True
     },
-
     "hieos": {
         "port_range": [f"1/{i}" for i in range(1, 17)],
         "mtu_range": (576, 9000),
@@ -71,7 +66,6 @@ PLATFORM_PARAMETER_CONSTRAINTS = {
         "poe_supported": True,
         "lldp_med_supported": True
     },
-
     "classic": {
         "port_range": [f"1/{i}" for i in range(1, 9)],
         "mtu_range": (576, 1500),
@@ -79,7 +73,6 @@ PLATFORM_PARAMETER_CONSTRAINTS = {
         "poe_supported": False,
         "lldp_med_supported": False
     },
-
     "raspberrypi": {
         "port_range": ["eth0", "wlan0"],
         "mtu_range": (576, 1500),
@@ -87,7 +80,6 @@ PLATFORM_PARAMETER_CONSTRAINTS = {
         "poe_supported": False,
         "lldp_med_supported": False
     },
-
     "edge": {
         "port_range": ["1/1"],
         "mtu_range": (576, 1500),
@@ -95,7 +87,6 @@ PLATFORM_PARAMETER_CONSTRAINTS = {
         "poe_supported": False,
         "lldp_med_supported": False
     },
-
     "bat": {
         "port_range": ["1/1"],
         "mtu_range": (576, 1500),
@@ -105,7 +96,7 @@ PLATFORM_PARAMETER_CONSTRAINTS = {
     }
 }
 
-# Retrieve the device information from the devices_list.json file
+# Load devices
 def load_devices(path="datafortraining/devices_list.json"):
     with open(path, "r") as f:
         data = json.load(f)
@@ -132,33 +123,28 @@ def load_devices(path="datafortraining/devices_list.json"):
             }
 
     return devices
-
-# Define the verbs for each action type and created the three main actions to perform on the devices.
+# Action verbs
 VERBS = {
     "allow": ["configure", "enable", "set", "apply", "allow", "assign", "activate"],
     "deny": ["deny", "block", "disable", "remove", "clear", "reset", "deactivate"],
     "get": ["show", "display", "retrieve", "get", "fetch"]
 }
 
-# Define the different types of noises into the generated sentences to make it more natural and human-like
+# Noise definitions
 NOISE_PREFIX = [
     "just to be clear,",
     "by the way,",
     "as far as I know,",
     "for this setup,",
-    "if I understand correctly,"
-    "for your information"
+    "if I understand correctly,",
+    "for your information,"
 ]
 
 NOISE_MID = ["basically", "sort of", "kind of", "technically", "somehow"]
 NOISE_TRAIL = ["if possible", "when you get a chance", "as soon as you can", "whenever that works"]
 NOISE_REDUNDANT = ["go ahead and", "please make sure to", "you can just", "go on and"]
 NOISE_CONTEXT = ["for the maintenance window,", "as per earlier discussion,", "for the new deployment,"]
-def get_intent_term(intent_type):
-    """Randomly returns abbreviation, acronym, or full form for noise injection."""
-    terms = INTENT_ABBREVIATIONS.get(intent_type, [intent_type])
-    return random.choice(terms)
-# Inject noise into the generated sentence orderly and to distrubute the noise data equally
+
 def inject_noise(sentence):
     r = random.random()
     if r < 0.20:
@@ -178,19 +164,14 @@ def inject_noise(sentence):
         return sentence.replace(" ", "  ")
     return sentence
 
-
-
-VLAN_NAMES = ["office", "iot", "guest", "camera", "prod", "dev", "lab"]
-TAG_MODES = ["tagged", "untagged"]
-
-# Generate a random value for a given parameter 
+# Random parameter generator
 def generate_value(param):
     if param == "vlan_id":
         return random.randint(1, 4094)
     if param == "vlan_name":
-        return random.choice(VLAN_NAMES)
+        return random.choice(["office", "iot", "guest", "camera", "prod", "dev", "lab"])
     if param == "tagging_mode":
-        return random.choice(TAG_MODES)
+        return random.choice(["tagged", "untagged"])
 
     if param in ["ip_address", "netmask", "gateway", "dns_server", "syslog_server", "sntp_server", "server_ip"]:
         return f"{random.randint(1, 223)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(1, 254)}"
@@ -244,7 +225,7 @@ def generate_value(param):
     if param == "ring_id":
         return random.randint(1, 64)
     if param == "protocol":
-        return random.choice(["hsr", "prp","mrp"])
+        return random.choice(["hsr", "prp", "mrp"])
     if param == "priority":
         return random.choice([0, 4096, 8192, 16384, 32768, 61440])
 
@@ -284,8 +265,7 @@ def generate_value(param):
         return random.choice(["rule10", "block_camera", "allow_iot", "deny_guest", "acl_001"])
 
     return f"{param}_{random.randint(1,999)}"
-
-# Generate the intent 
+# Intent generator
 class IntentGenerator:
     def __init__(self, devices):
         self.devices = devices
@@ -299,45 +279,50 @@ class IntentGenerator:
         device, port = self._pick_device_and_port()
         platform = self.devices[device]["platform"]
 
-        # PLATFORM-AWARE INTENT TYPE SELECTION
+        # Pick intent_type based on platform capabilities
         allowed_intents = PLATFORM_CAPABILITIES[platform]
         intent_type = random.choice(allowed_intents)
 
-        # SUB-INTENT SELECTION (no extra filtering here)
+        # Pick sub-intent
         sub_intent_type = random.choice(list(INTENT_TEMPLATES[intent_type].keys()))
 
-        # ACTION SELECTION
+        # Pick action + template
         actions_dict = INTENT_TEMPLATES[intent_type][sub_intent_type]
         valid_actions = [a for a, t in actions_dict.items() if t]
 
         if not valid_actions:
             action = random.choice(list(actions_dict.keys()))
-            template = "{action} " + get_intent_term(intent_type)
+            template = "{action} " + intent_type.replace("_", " ")
             policy = POLICY_TEMPLATES[intent_type][sub_intent_type][action]
         else:
             action = random.choice(valid_actions)
             template = random.choice(actions_dict[action])
             policy = POLICY_TEMPLATES[intent_type][sub_intent_type][action]
 
+        # Pick action verb
         action_word = random.choice(VERBS.get(action, ["do"]))
 
-        # Generate parameters
+        # Build parameters
         parameters = {
             "device": device,
             "platform": platform
         }
 
+        # Port handling
         if "port" in policy["required_parameters"] or "{port}" in template:
             parameters["port"] = port
 
+        # Required parameters
         for req in policy["required_parameters"]:
             if req not in parameters:
                 parameters[req] = generate_value(req)
 
+        # Optional parameters
         for opt in policy["optional_parameters"]:
             if "{" + opt + "}" in template:
                 parameters[opt] = generate_value(opt)
 
+        # Fill missing placeholders
         placeholders = re.findall(r"{(.*?)}", template)
         for ph in placeholders:
             if ph == "action":
@@ -345,7 +330,7 @@ class IntentGenerator:
             if ph not in parameters:
                 parameters[ph] = generate_value(ph)
 
-        # pulling platform specific constraints
+        # Apply platform constraints
         rules = PLATFORM_PARAMETER_CONSTRAINTS[platform]
 
         if "port" in parameters:
@@ -366,7 +351,7 @@ class IntentGenerator:
             for p in ["policy_name", "tlv_type"]:
                 parameters.pop(p, None)
 
-        # retrieve the parameters from the policy template and remove any parameters that are not in the intent
+        # Remove parameters not allowed by policy
         required = policy["required_parameters"]
         optional = policy["optional_parameters"]
         allowed = set(required + optional + ["device", "platform", "port"])
@@ -374,16 +359,38 @@ class IntentGenerator:
         for p in list(parameters.keys()):
             if p not in allowed:
                 parameters.pop(p)
- 
-        
+
+        # Remove placeholders for missing optional fields
         for ph in ["tlv_type", "policy_name"]:
             if ph not in parameters:
                 template = template.replace("{" + ph + "}", "")
-        # Create the natural language sentence by formatting the template with the action and parameters
-            natural_language_str = template.format(action=action_word, **parameters)
-        #  replace any leftover intent_type mention in the sentence with abbreviation/full form
-            natural_language_str = natural_language_str.replace(intent_type.replace("_", " "),get_intent_term(intent_type),1)
-            natural = inject_noise(natural_language_str)
+
+        # Build natural language sentence
+        natural_language_str = template.format(action=action_word, **parameters)
+
+        
+        abbr_list = INTENT_ABBREVIATIONS.get(intent_type, [])
+
+        if abbr_list:
+            chosen_variant = random.choice(abbr_list)
+
+            # Replace only the intent_type text inside the template
+            natural_language_str = re.sub(
+                intent_type.replace("_", " "),
+                chosen_variant,
+                natural_language_str,
+                flags=re.IGNORECASE
+            )
+
+           
+            if chosen_variant.lower() not in natural_language_str.lower():
+                parts = natural_language_str.split(" ", 1)
+                if len(parts) == 2:
+                    natural_language_str = f"{parts[0]} {chosen_variant} {parts[1]}"
+       
+        # Add noise
+        natural = inject_noise(natural_language_str)
+
         return {
             "uid": str(uuid.uuid4()),
             "natural_language": natural,
@@ -395,11 +402,14 @@ class IntentGenerator:
             "policy": policy
         }
 
+# MAIN EXECUTION BLOCK
+
+
 if __name__ == "__main__":
     devices = load_devices("datafortraining/devices_list.json")
     generator = IntentGenerator(devices)
 
-    N = 5000
+    N = 5000  # number of samples to generate
     dataset = [generator.generate_intent() for _ in range(N)]
 
     with open("datafortraining/intent_dataset.json", "w") as f:
