@@ -1,0 +1,18 @@
+=== VALIDATION FOR EXAMPLE INTENT ===
+
+Natural Language: remove vlan 3310 on red25-2
+Parameters: {'device': 'red25-2', 'platform': 'HIOS', 'vlan_id': 3310}
+
+--------------------------------------
+
+Natural Language Check → PASS | Sentence is well‑formed
+Verb Check → PASS | Verb 'remove' valid for platform 'HIOS'
+Tagging Mode Check → SKIPPED | tagging_mode not present
+VLAN Name Check → SKIPPED | vlan_name not present
+Required Parameters Check → PASS | All required parameters present
+Optional Parameters Check → PASS | Optional parameters valid
+Device Check → PASS | Device exists
+Port Check → SKIPPED | port not present
+Constraints Check → PASS | Constraints satisfied
+Placeholder Check → PASS | No unresolved placeholders
+Policy Alignment Check → PASS | Policy alignment OK

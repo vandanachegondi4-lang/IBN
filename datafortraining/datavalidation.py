@@ -251,7 +251,7 @@ for name, func in CHECKS:
 # -----------------------------
 # WRITE FILE
 # -----------------------------
-with open("datafortraining/validation_text.txt", "w") as f:
+with open("datafortraining/validation_text.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(lines))
 
 print("validation_text.txt created.")

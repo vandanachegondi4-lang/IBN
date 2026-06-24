@@ -28,9 +28,7 @@ def profile_dataset(dataset):
     lines.append("=== DATA PROFILING REPORT ===\n")
     lines.append(f"Total samples: {n}\n\n")
 
-    # ---------------------------------------------------------
-    # 1. Intent / Sub‑Intent / Action Distribution
-    # ---------------------------------------------------------
+    
     intent_counter = Counter()
     sub_intent_counter = Counter()
     action_counter = Counter()
@@ -58,9 +56,7 @@ def profile_dataset(dataset):
         lines.append(f"   {ac:10s} {c:6d} ({c/n:.2%})\n")
     lines.append("\n")
 
-    # ---------------------------------------------------------
-    # 2. Natural Language Profiling
-    # ---------------------------------------------------------
+    
     lengths = []
     unresolved = 0
     noise_detected = 0
@@ -158,7 +154,7 @@ def main():
     dataset = load_json(DATASET_PATH)
     report = profile_dataset(dataset)
 
-    with open(OUTPUT_PATH, "w") as f:
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         f.write(report)
 
     print(f"Data profiling report written to {OUTPUT_PATH}")
