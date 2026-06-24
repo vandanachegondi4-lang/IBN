@@ -5,7 +5,7 @@ import re
 
 MODEL = "phi3:mini"
 DATASET_PATH = "datafortraining/llama_training.jsonl"
-MAX_TESTS = 5
+MAX_TESTS = 10
 
 
 def query_model(instruction, user_input):
