@@ -26,7 +26,6 @@ def is_ipv4(s):
 def profile_dataset(dataset):
     n = len(dataset)
     lines = []
-    lines.append("=== DATA PROFILING REPORT ===\n")
     lines.append(f"Total samples: {n}\n\n")
 
     
@@ -143,7 +142,7 @@ def profile_dataset(dataset):
     lines.append("9) Outlier Detection:\n")
     lines.append(f"   Outlier sentences (>3σ): {len(outliers)}\n\n")
 
-    lines.append("=== END OF DATA PROFILING REPORT ===\n")
+    
 
     return "".join(lines)
 
