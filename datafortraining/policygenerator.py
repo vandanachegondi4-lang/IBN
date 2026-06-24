@@ -1,15 +1,13 @@
 import json
 import re
 
-# ---------------------------------------------------------
+
 # Load intent templates (hierarchical: type → sub → action)
-# ---------------------------------------------------------
-with open("datafortraining/intent_template.json") as f:
+
+with open("datafortraining/intent_template.json", "r", encoding="utf-8") as f:
     templates = json.load(f)
 
-# ---------------------------------------------------------
-# Full constraint dictionary for ALL placeholders
-# ---------------------------------------------------------
+
 CONSTRAINTS = {
     # Device / Port
     "port": "string-or-port-range",
@@ -93,23 +91,18 @@ CONSTRAINTS = {
     "vlanid": "1-4094"
 }
 
-# ---------------------------------------------------------
 # Extract placeholders from template string
-# ---------------------------------------------------------
+
 def extract_placeholders(template_str):
     return set(re.findall(r"{(.*?)}", template_str))
 
-
-# ---------------------------------------------------------
-# Build policy for one allow/deny/get group
-# ---------------------------------------------------------
 def build_policy_for_action(action_templates):
     per_template_placeholders = []
 
     for t in action_templates:
         per_template_placeholders.append(extract_placeholders(t))
 
-    # Union: appears in at least one template
+    # Union: appears in any template
     all_placeholders = set().union(*per_template_placeholders)
 
     # Intersection: appears in every template
@@ -132,7 +125,7 @@ def build_policy_for_action(action_templates):
     if "platform" not in required:
         required.append("platform")
 
-   # Correct port logic
+   # port logic
     if "port" in common_placeholders:
         required.append("port")
     elif "port" in all_placeholders:
@@ -141,7 +134,7 @@ def build_policy_for_action(action_templates):
         optional.append("port")
 
 
-    # Everything else
+    #  apply optional parameters
     for p in sorted(all_placeholders):
         if p in ["device", "port"]:
             continue
@@ -164,9 +157,7 @@ def build_policy_for_action(action_templates):
     }
 
 
-# ---------------------------------------------------------
-# Build full hierarchical policy template
-# ---------------------------------------------------------
+# Generate the policy template based on the intent templates
 policy = {}
 
 for intent_type, sub_intents in templates.items():
@@ -186,13 +177,11 @@ for intent_type, sub_intents in templates.items():
                 }
                 continue
 
-            # Normal case
+            
             policy[intent_type][sub_intent_type][action] = build_policy_for_action(action_templates)
 
 
-# ---------------------------------------------------------
-# Save output
-# ---------------------------------------------------------
+# Save the generated policy template to a JSON file
 with open("datafortraining/policy_template.json", "w") as f:
     json.dump(policy, f, indent=4)
 
