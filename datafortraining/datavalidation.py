@@ -33,7 +33,6 @@ for platform, devs in devices_list.items():
             "ports": ports
         }
 
--
 PLATFORM_VERBS = {
     "hios": {
         "allow": ["configure", "enable", "set", "apply", "allow"],

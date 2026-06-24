@@ -6,7 +6,7 @@ Parameters: {'device': 'red25-2', 'platform': 'HIOS', 'vlan_id': 3310}
 --------------------------------------
 
 Natural Language Check → PASS | Sentence is well‑formed
-Verb Check → PASS | Verb 'remove' valid for platform 'HIOS'
+Verb Check → FAIL | Verb 'remove' invalid for action 'deny' on platform 'HIOS'
 Tagging Mode Check → SKIPPED | tagging_mode not present
 VLAN Name Check → SKIPPED | vlan_name not present
 Required Parameters Check → PASS | All required parameters present
