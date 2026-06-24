@@ -1,3 +1,4 @@
+# Converting the intent_dataset.json format file into jsonl format for training llm
 import json
 
 INPUT_PATH = "datafortraining/intent_dataset.json"
@@ -24,6 +25,6 @@ def to_jsonl(entry):
 with open(INPUT_PATH) as f:
     dataset = json.load(f)
 
-with open(OUTPUT_PATH, "w") as f:
+with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
     for entry in dataset:
         f.write(json.dumps(to_jsonl(entry)) + "\n")
