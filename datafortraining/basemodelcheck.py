@@ -7,9 +7,7 @@ MODEL = "phi3:mini"
 DATASET_PATH = "datafortraining/llama_training.jsonl"
 MAX_TESTS = 5
 
-# ---------------------------------------
-# Call Ollama model
-# ---------------------------------------
+
 def query_model(instruction, user_input):
     prompt = f"{instruction}\n\n{user_input}"
     result = subprocess.run(
@@ -19,9 +17,7 @@ def query_model(instruction, user_input):
     )
     return result.stdout.decode("utf-8").strip()
 
-# ---------------------------------------
-# Extract JSON from model output
-# ---------------------------------------
+
 def extract_json(text):
     try:
         # Remove markdown fences if present
@@ -30,9 +26,8 @@ def extract_json(text):
     except:
         return None
 
-# ---------------------------------------
+
 # Validate schema (not exact match)
-# ---------------------------------------
 def validate_schema(expected_json, model_json):
     if model_json is None:
         return False, "Model did not return valid JSON"
@@ -50,9 +45,7 @@ def validate_schema(expected_json, model_json):
 
     return True, None
 
-# ---------------------------------------
-# Main test loop
-# ---------------------------------------
+
 def test_dataset():
     passed = 0
     failed = 0
@@ -77,21 +70,16 @@ def test_dataset():
             ok, error = validate_schema(expected_json, model_json)
 
             if ok:
-                print("✔ PASS (schema matched)")
+                print("PASS (schema matched)")
                 passed += 1
             else:
-                print("✖ FAIL")
+                print("FAIL")
                 failed += 1
                 print("Reason:", error)
-                print("\n--- RAW MODEL OUTPUT ---")
                 print(model_output)
 
-    print("\n==============================")
-    print("TEST SUMMARY")
-    print("==============================")
+
     print(f"Passed: {passed}")
     print(f"Failed: {failed}")
-    print("==============================")
-
 if __name__ == "__main__":
     test_dataset()
