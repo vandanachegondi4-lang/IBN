@@ -1,3 +1,4 @@
+# Verifying the null values
 import json
 
 DATASET_PATH = "datafortraining/intent_dataset.json"
