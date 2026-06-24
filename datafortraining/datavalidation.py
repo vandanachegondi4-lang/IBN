@@ -1,23 +1,17 @@
 import json
 import re
 
-# -----------------------------
-# Helper to load JSON
-# -----------------------------
+
 def load_json(path):
     with open(path, "r") as f:
         return json.load(f)
 
-# -----------------------------
-# Load dataset + policy + devices
-# -----------------------------
+
 dataset = load_json("datafortraining/intent_dataset.json")
 policy_templates = load_json("datafortraining/policy_template.json")
 devices_list = load_json("datafortraining/devices_list.json")
 
-# -----------------------------
-# Build device → ports map (supports your JSON format)
-# -----------------------------
+
 devices = {}
 for platform, devs in devices_list.items():
     for dev, info in devs.items():
@@ -39,21 +33,19 @@ for platform, devs in devices_list.items():
             "ports": ports
         }
 
-# -----------------------------
-# Platform‑specific verb rules
-# -----------------------------
+-
 PLATFORM_VERBS = {
-    "HIOS": {
+    "hios": {
         "allow": ["configure", "enable", "set", "apply", "allow"],
         "deny": ["disable", "remove", "clear", "reset"],
         "get": ["show", "display", "retrieve", "get", "fetch"]
     },
-    "HIEOS": {
+    "hieos": {
         "allow": ["set", "enable", "configure"],
         "deny": ["disable", "delete"],
         "get": ["show", "get"]
     },
-    "CLASSIC": {
+    "classic": {
         "allow": ["set", "enable"],
         "deny": ["disable", "clear"],
         "get": ["show"]
@@ -75,15 +67,11 @@ PLATFORM_VERBS = {
     }
 }
 
-# -----------------------------
-# VLAN rules
-# -----------------------------
+
 VALID_TAG_MODES = ["tagged", "untagged"]
 VALID_VLAN_NAMES = ["office", "iot", "guest", "camera", "prod", "dev", "lab"]
 
-# -----------------------------
-# CHECK FUNCTIONS
-# -----------------------------
+
 def check_natural_language(entry):
     nl = entry["natural_language"]
     if not isinstance(nl, str) or len(nl.strip()) < 5:
@@ -219,9 +207,7 @@ def check_placeholders(entry):
         return "FAIL", "Unresolved placeholder found"
     return "PASS", "No unresolved placeholders"
 
-# -----------------------------
-# RUN VALIDATION ON ONE EXAMPLE
-# -----------------------------
+
 CHECKS = [
     ("Natural Language", check_natural_language),
     ("Verb", check_verb),
@@ -248,9 +234,7 @@ for name, func in CHECKS:
     status, reason = func(example)
     lines.append(f"{name} Check → {status} | {reason}")
 
-# -----------------------------
-# WRITE FILE
-# -----------------------------
+
 with open("datafortraining/validation_text.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(lines))
 
