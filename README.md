@@ -211,7 +211,7 @@ Three scripts handle quality checks:
 
 ### 8. Pre-Training Dataset Test (Ollama)
 
-After converting the dataset to JSONL, it is tested against a base model (`phi3:mini` or `llama3.2`) via [Ollama](https://ollama.com) using `basemodelcheck.py` to verify:
+After converting the dataset to JSONL, it is tested against a base model (`phi3:mini` or `llama3.1`) via [Ollama](https://ollama.com) using `basemodelcheck.py` to verify:
 
 - Natural-language clarity
 - JSON formatting consistency
