@@ -16,6 +16,7 @@ For example:
 3. Raspberry Pi devices support only system‑level intents
 4. BAT devices support only system management
 5. Edge devices support only monitoring + system management
+6. HiEOS supports VLAN, LLDP, LLDP‑MED, basic QoS, basic ACL, PoE, firmware operations, and monitoring.
 
 To prevent invalid or impossible intents from being generated, devices must be grouped by OS family, and each OS family is mapped to a platform.
 This prevents invalid configurations and ensures that the LLM learns accurate, platform‑specific behavior.
