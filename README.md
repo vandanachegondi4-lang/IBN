@@ -1,5 +1,24 @@
 # IBN Workflow — Intent Dataset Generation
 A pipeline for generating high-quality, platform-aware datasets to train LLMs (LLaMA-8B, Phi, Gemma) to convert natural-language network intents into structured JSON.
+# Devices divided by OS version
+Devices in this system are not grouped randomly — they are divided into platforms based on the OS version they run.
+This OS‑based grouping is essential because each OS family supports a different set of features, and therefore a different set of intent types.
+
+## Main Reason to divide devices by OS version
+
+Different Hirschmann operating systems (HiOS, Classic, HiEOS, etc.) provide different capabilities.
+Because of this, not all devices can support all intents.
+
+For example:
+
+1. HiOS devices support advanced features like QoS, PoE, LLDP‑MED
+2. Classic OS devices support only basic networking features
+3. Raspberry Pi devices support only system‑level intents
+4. BAT devices support only system management
+5. Edge devices support only monitoring + system management
+
+To prevent invalid or impossible intents from being generated, devices must be grouped by OS family, and each OS family is mapped to a platform.
+This prevents invalid configurations and ensures that the LLM learns accurate, platform‑specific behavior.
 
 ---
 
@@ -200,14 +219,14 @@ After converting the dataset to JSONL, it is tested against a base model (`phi3:
 > **Note:** This is a quality and clarity check, not a schema correctness test.
 
 ---
-
+## Next Steps
 ## Fine-Tuning
 
 ### Parameter-Efficient Fine-Tuning (PEFT)
 
-Rather than full fine-tuning (expensive and slow), this project uses PEFT methods which are faster, cheaper, more stable, and possible on CPU or small GPU.
+Rather than full fine-tuning (expensive and slow), this project planned to use PEFT methods which are faster, cheaper, more stable, and possible on CPU or small GPU.
 
-Two methods are used:
+Two methods will be used:
 
 #### LoRA — Low-Rank Adapters (16-bit precision)
 
@@ -311,12 +330,10 @@ ollama pull llama3.1     # full (8B) — recommended
 | Model | RAM (min) | VRAM (GPU) | Disk |
 |---|---|---|---|
 | `phi3:mini` | 8 GB | ~2–3 GB | ~2.3 GB |
-| `llama3.2:3b` | 8 GB | ~2–3 GB | ~2.0 GB |
-| `llama3.2` (8B) | 16 GB | ~5–6 GB | ~4.7 GB |
+| `llama3.1` (8B) | 16 GB | ~5–6 GB | ~4.7 GB |
 
 > **No GPU?** Ollama runs on CPU-only — models just run slower. Small models like `phi3:mini` are usable on 8 GB RAM without a GPU.
 
-> **GPU tip:** NVIDIA is fully supported on both platforms. AMD (ROCm) is supported on Linux only — not on Windows.
 
 ---
 
@@ -350,7 +367,7 @@ The script sends samples from `intent_dataset.json` to the local model and check
 
 ```powershell
 ollama run phi3:mini "configure vlan 10 tagged on brs40-1 port 1/1"
-ollama run llama3.2 "enable snmp on brs40-1"
+ollama run llama3.1 "enable snmp on brs40-1"
 ```
 
 **Linux:**
@@ -363,16 +380,6 @@ ollama run llama3.1 "enable snmp on brs40-1"
 ---
 
 ### Troubleshooting
-
-| Problem | Windows Fix | Linux Fix |
-|---|---|---|
-| `ollama` not recognized | Open a new terminal — PATH needs a restart | Run `source ~/.bashrc` or open a new terminal |
-| Model won't download | Add Ollama to Windows Defender exclusions | Check firewall: `sudo ufw allow 11434` |
-| Out of memory | Switch to `phi3:mini` or `llama3.1:3b` | Switch to `phi3:mini` or `llama3.1:3b` |
-| GPU not detected | Update NVIDIA drivers | Run `nvidia-smi` to verify driver; CUDA 525+ required |
-| Slow inference | Expected on CPU-only — use a GPU for speed | Same; AMD GPU needs ROCm drivers installed |
-
----
 
 ## Running Scripts from GitLab
 
@@ -406,7 +413,7 @@ python datafortraining/basemodelcheck.py
 createdevicelist.py + ports.py
        │
        ▼
-policygenerator.py  ──► policy_template.json
+policygenerator.py  ──► policy_template.json + intent_template.json
        │
        ▼
 generatedata.py  ──► intent_dataset.json
@@ -418,7 +425,7 @@ datavalidation.py + checknull.py + dataprofiling.py
 convertjsonl.py  ──► llama_training.jsonl
        │
        ▼
-  basemodelcheck.py (phi3:mini / llama3.2 via Ollama)
+  basemodelcheck.py (phi3:mini / llama3.1 via Ollama)
        │
        ▼
   PEFT fine-tuning (LoRA / QLoRA)
