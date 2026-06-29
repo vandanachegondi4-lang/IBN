@@ -13,41 +13,82 @@ INTENT_TEMPLATES = load_json("datafortraining/intent_template.json")
 POLICY_TEMPLATES = load_json("datafortraining/policy_template.json")
 INTENT_ABBREVIATIONS = load_json("datafortraining/abbreviations.json")
 
-# Platform capabilities
+# Platform capabilities (with full names + capabilities list)
 PLATFORM_CAPABILITIES = {
-    "hios": [
-        "system_mgmt", "user_mgmt", "interface", "vlan", "mac_table",
-        "port_security", "qos", "acl", "traffic_control", "lldp",
-        "lldp_med", "spanning_tree", "lacp", "mrp", "hsr_prp",
-        "routing", "dhcp", "dns", "sntp", "syslog", "snmp",
-        "igmp_mld", "dhcp_snooping", "arp_inspection",
-        "industrial_protocols", "monitoring", "poe",
-        "firmware_file_mgmt", "usb_sd", "config_mgmt"
-    ],
-    "hieos": [
-        "system_mgmt", "user_mgmt", "interface", "vlan", "mac_table",
-        "port_security", "qos", "lldp", "lldp_med", "spanning_tree",
-        "lacp", "routing", "dhcp", "dns", "syslog", "snmp",
-        "monitoring", "poe", "firmware_file_mgmt", "config_mgmt"
-    ],
-    "classic": [
-        "system_mgmt", "user_mgmt", "interface", "vlan",
-        "lldp", "spanning_tree", "routing", "dhcp",
-        "dns", "syslog", "snmp"
-    ],
-    "raspberrypi": [
-        "system_mgmt", "user_mgmt",
-        "vlan",
-        "lldp",
-        "snmp",
-        "monitoring"
-    ],
-    "edge": [
-        "system_mgmt", "monitoring"
-    ],
-    "bat": [
-        "system_mgmt"
-    ]
+    "hios": {
+        "full_name": "Hirschmann Industrial Operating System",
+        "vendor": "Hirschmann",
+        "os_family": "HIOS",
+        "description": "Full-featured Hirschmann switch OS has wide range of features.",
+        "capabilities": [
+            "system_mgmt", "user_mgmt", "interface", "vlan", "mac_table",
+            "port_security", "qos", "acl", "traffic_control", "lldp",
+            "lldp_med", "spanning_tree", "lacp", "mrp", "hsr_prp",
+            "routing", "dhcp", "dns", "sntp", "syslog", "snmp",
+            "igmp_mld", "dhcp_snooping", "arp_inspection",
+            "industrial_protocols", "monitoring", "poe",
+            "firmware_file_mgmt", "usb_sd", "config_mgmt"
+        ]
+    },
+
+    "hieos": {
+        "full_name": "Hirschmann Embedded Operating System",
+        "vendor": "Hirschmann",
+        "os_family": "HIEOS",
+        "description": "Lightweight Hirschmann OS used on Lemur devices.",
+        "capabilities": [
+            "system_mgmt", "user_mgmt", "interface", "vlan", "mac_table",
+            "port_security", "qos", "lldp", "lldp_med", "spanning_tree",
+            "lacp", "mrp", "routing", "dhcp", "dns", "syslog", "snmp",
+            "monitoring", "poe", "firmware_file_mgmt", "config_mgmt"
+        ]
+    },
+
+    "classic": {
+        "full_name": "Hirschmann Classic Operating System",
+        "vendor": "Hirschmann",
+        "os_family": "Classic",
+        "description": "Legacy Hirschmann OS used on classic switches.",
+        "capabilities": [
+            "system_mgmt", "user_mgmt", "interface", "vlan",
+            "lldp", "spanning_tree", "mrp", "routing", "dhcp",
+            "dns", "syslog", "snmp"
+        ]
+    },
+
+    "raspberrypi": {
+        "full_name": "Raspberry Pi Linux",
+        "vendor": "Raspberry Pi Foundation",
+        "os_family": "Linux",
+        "description": "Generic Linux device used for testing.",
+        "capabilities": [
+            "system_mgmt", "user_mgmt",
+            "vlan",
+            "lldp",
+            "snmp",
+            "monitoring"
+        ]
+    },
+
+    "edge": {
+        "full_name": "Edge Compute Device",
+        "vendor": "Generic",
+        "os_family": "Linux",
+        "description": "Non-switch edge compute node.",
+        "capabilities": [
+            "system_mgmt", "monitoring"
+        ]
+    },
+
+    "bat": {
+        "full_name": "Battery Powered IoT Device",
+        "vendor": "Generic",
+        "os_family": "Embedded",
+        "description": "Minimal device with only system management.",
+        "capabilities": [
+            "system_mgmt"
+        ]
+    }
 }
 
 # Platform constraints
@@ -265,6 +306,76 @@ def generate_value(param):
         return random.choice(["rule10", "block_camera", "allow_iot", "deny_guest", "acl_001"])
 
     return f"{param}_{random.randint(1,999)}"
+
+
+# Intent elaboration
+def elaborate_intent(intent_type, sub_intent_type, parameters, platform):
+    meta = PLATFORM_CAPABILITIES[platform]
+    vendor = meta["vendor"]
+    full_name = meta["full_name"]
+    os_family = meta["os_family"]
+
+    device = parameters.get("device", "device")
+    port = parameters.get("port")
+    vlan_id = parameters.get("vlan_id")
+    vlan_name = parameters.get("vlan_name")
+    tagging = parameters.get("tagging_mode")
+
+    # VLAN intents
+    if intent_type == "vlan":
+        if sub_intent_type == "create":
+            return (
+                f"Create VLAN {vlan_id} named '{vlan_name}' on device {device}. "
+                f"This adds a new VLAN entry in the {full_name} ({os_family}) "
+                f"operating system from {vendor}."
+            )
+
+        if sub_intent_type == "assign_port":
+            mode = "tagged trunk" if tagging == "tagged" else "untagged access"
+            return (
+                f"Assign VLAN {vlan_id} to port {port} on device {device} "
+                f"using {mode} mode. This configures the port according to "
+                f"{full_name} ({os_family}) behavior from {vendor}."
+            )
+
+        if sub_intent_type == "tagging_mode":
+            return (
+                f"Set tagging mode '{tagging}' for VLAN {vlan_id} on port {port} "
+                f"on device {device} running {full_name} ({os_family})."
+            )
+
+    # Interface intents
+    if intent_type == "interface":
+        if sub_intent_type == "speed":
+            speed = parameters.get("speed")
+            return (
+                f"Set interface {port} speed to {speed} Mbps on device {device}. "
+                f"Applies interface configuration on {full_name} ({os_family}) "
+                f"from {vendor}."
+            )
+
+        if sub_intent_type == "mtu":
+            mtu = parameters.get("mtu")
+            return (
+                f"Configure MTU {mtu} on interface {port} for device {device}. "
+                f"Ensures packet size compatibility for {full_name} ({os_family})."
+            )
+
+    # System management
+    if intent_type == "system_mgmt":
+        if sub_intent_type == "hostname":
+            hostname = parameters.get("hostname")
+            return (
+                f"Set hostname '{hostname}' on device {device}. "
+                f"This updates system identity on {full_name} ({os_family}) "
+                f"from {vendor}."
+            )
+
+    # Fallback
+    return (
+        f"Perform {intent_type}/{sub_intent_type} operation on device {device} "
+        f"running {full_name} ({os_family}) from {vendor} with parameters {parameters}."
+    )
 # Intent generator
 class IntentGenerator:
     def __init__(self, devices):
@@ -280,7 +391,7 @@ class IntentGenerator:
         platform = self.devices[device]["platform"]
 
         # Pick intent_type based on platform capabilities
-        allowed_intents = PLATFORM_CAPABILITIES[platform]
+        allowed_intents = PLATFORM_CAPABILITIES[platform]["capabilities"]
         intent_type = random.choice(allowed_intents)
 
         # Pick sub-intent
@@ -305,7 +416,13 @@ class IntentGenerator:
         # Build parameters
         parameters = {
             "device": device,
-            "platform": platform
+            "platform": {
+                "id": platform,
+                "vendor": PLATFORM_CAPABILITIES[platform]["vendor"],
+                "full_name": PLATFORM_CAPABILITIES[platform]["full_name"],
+                "os_family": PLATFORM_CAPABILITIES[platform]["os_family"],
+                "description": PLATFORM_CAPABILITIES[platform]["description"]
+            }
         }
 
         # Port handling
@@ -368,13 +485,11 @@ class IntentGenerator:
         # Build natural language sentence
         natural_language_str = template.format(action=action_word, **parameters)
 
-        
         abbr_list = INTENT_ABBREVIATIONS.get(intent_type, [])
 
         if abbr_list:
             chosen_variant = random.choice(abbr_list)
 
-            # Replace only the intent_type text inside the template
             natural_language_str = re.sub(
                 intent_type.replace("_", " "),
                 chosen_variant,
@@ -382,14 +497,18 @@ class IntentGenerator:
                 flags=re.IGNORECASE
             )
 
-           
             if chosen_variant.lower() not in natural_language_str.lower():
                 parts = natural_language_str.split(" ", 1)
                 if len(parts) == 2:
                     natural_language_str = f"{parts[0]} {chosen_variant} {parts[1]}"
-       
+
         # Add noise
         natural = inject_noise(natural_language_str)
+
+        # Elaborate intent
+        intent_elaboration = elaborate_intent(
+            intent_type, sub_intent_type, parameters, platform
+        )
 
         return {
             "uid": str(uuid.uuid4()),
@@ -399,12 +518,12 @@ class IntentGenerator:
             "intent_action": action,
             "intent_name": f"{intent_type}_{sub_intent_type}_{action}",
             "parameters": parameters,
+            "intent_elaboration": intent_elaboration,
             "policy": policy
         }
 
+
 # MAIN EXECUTION BLOCK
-
-
 if __name__ == "__main__":
     devices = load_devices("datafortraining/devices_list.json")
     generator = IntentGenerator(devices)
