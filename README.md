@@ -48,16 +48,18 @@ datafortraining/
 ├── checknull.py              # Detects and reports null/empty values
 ├── convertjsonl.py           # Converts dataset to JSONL format
 ├── createdevicelist.py       # Generates device inventory
-├── dataprofiling.py          # Profiles dataset structure and distribution
-├── datavalidation.py         # Validates parameters and constraints
+├── dataprofiling.py          # Profiles dataset structure and distribution        
 ├── generatedata.py           # Generates the intent dataset
 ├── policygenerator.py        # Generates policy_template.json
 ├── ports.py                  # Defines port ranges per platform
-│
+├── finaldataset.py           # Remove unwanted parameters and make it ready for PEFT 
+outputs/
+|
 ├── intent_template.json      # Natural-language intent patterns
 ├── policy_template.json      # Parameter constraints and allowed actions (generated)
 ├── devices_list.json         # Device inventory (generated)
 ├── intent_dataset.json       # Generated raw dataset
+├── final_dataset.json        # Final ready dataset
 └── llama_training.jsonl      # Fine-tuning dataset (generated)
 ```
 
@@ -194,7 +196,25 @@ Defines device names, platforms, IP addresses, and available ports.
   }
 }
 ```
-
+Final dataset format
+```json
+{
+        "input": "retrieve DHCP relay configuration on red25-1",
+        "output": {
+            "intent": {
+                "domain": "dhcp",
+                "operation": "read"
+            },
+            "entities": {
+                "device": "red25-1"
+            },
+            "parameters": {},
+            "modifiers": {
+                "conditional": false
+            }
+        }
+    }
+```
 ---
 
 ### 7. Dataset Verification and Profiling
@@ -203,7 +223,6 @@ Three scripts handle quality checks:
 
 | Script | Purpose | Output |
 |---|---|---|
-| `datavalidation.py` | Validates required parameters, platform constraints, port ranges, and unsupported actions | `validation_report.txt` |
 | `checknull.py` | Detects and reports null or empty values | `empty_values_report.txt` |
 | `dataprofiling.py` | Reports missing values, parameter distribution, intent type frequency, and data spread | `data_profiling_report.txt` |
 
@@ -420,7 +439,7 @@ policygenerator.py  ──► policy_template.json + intent_template.json
 generatedata.py  ──► intent_dataset.json
        │
        ▼
-datavalidation.py + checknull.py + dataprofiling.py
+checknull.py + dataprofiling.py
        │
        ▼
 convertjsonl.py  ──► llama_training.jsonl
