@@ -1,0 +1,4780 @@
+{
+    "system_mgmt": {
+        "hostname": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "hostname"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "hostname": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "hostname"
+                ],
+                "constraints": {
+                    "hostname": "string"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "hostname"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "hostname": "string"
+                }
+            }
+        },
+        "mgmt_ip": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ip_address"
+                ],
+                "optional_parameters": [
+                    "netmask"
+                ],
+                "constraints": {
+                    "netmask": "ipv4",
+                    "ip_address": "ipv4"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "ip_address",
+                    "netmask"
+                ],
+                "constraints": {
+                    "netmask": "ipv4",
+                    "ip_address": "ipv4"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ip_address"
+                ],
+                "optional_parameters": [
+                    "netmask"
+                ],
+                "constraints": {
+                    "netmask": "ipv4",
+                    "ip_address": "ipv4"
+                }
+            }
+        },
+        "gateway": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "gateway"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "gateway": "ipv4"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "gateway"
+                ],
+                "constraints": {
+                    "gateway": "ipv4"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "gateway"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "gateway": "ipv4"
+                }
+            }
+        },
+        "timezone": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "timezone"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "timezone": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "timezone"
+                ],
+                "constraints": {
+                    "timezone": "string"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "timezone"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "timezone": "string"
+                }
+            }
+        },
+        "service": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "service_name"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "service_name": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "service_name"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "service_name": "string"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "service_name"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "service_name": "string"
+                }
+            }
+        }
+    },
+    "user_mgmt": {
+        "create_user": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "role",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "username": "string"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "role",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "username": "string"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "role",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "username": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "role",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "username": "string"
+                }
+            }
+        },
+        "delete_user": {
+            "create": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "username": "string"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "password": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "username": "string"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "username": "string"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "username": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "username": "string"
+                }
+            }
+        },
+        "role": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "role",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "username": "string"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "role",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "username": "string"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "role",
+                    "username"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "username": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "role",
+                    "username"
+                ],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "username": "string"
+                }
+            }
+        }
+    },
+    "interface": {
+        "admin_state": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "speed": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "speed"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "speed": [
+                        "10",
+                        "100",
+                        "1000",
+                        "2500",
+                        "10000"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "speed"
+                ],
+                "constraints": {
+                    "speed": [
+                        "10",
+                        "100",
+                        "1000",
+                        "2500",
+                        "10000"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "speed"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "speed": [
+                        "10",
+                        "100",
+                        "1000",
+                        "2500",
+                        "10000"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "duplex": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "operating_mode"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "operating_mode": [
+                        "full",
+                        "half",
+                        "auto"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "operating_mode"
+                ],
+                "constraints": {
+                    "operating_mode": [
+                        "full",
+                        "half",
+                        "auto"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "operating_mode"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "operating_mode": [
+                        "full",
+                        "half",
+                        "auto"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "mtu": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "mtu"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "mtu": "1-9216"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "mtu"
+                ],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "mtu": "1-9216"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "mtu"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "mtu": "1-9216"
+                }
+            }
+        },
+        "flow_control": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "description": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "description"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "description": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "description"
+                ],
+                "constraints": {
+                    "description": "string",
+                    "port": "string-or-port-range"
+                }
+            },
+            "reset": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "description"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "description": "string"
+                }
+            }
+        }
+    },
+    "vlan": {
+        "create": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "vlan_id"
+                ],
+                "optional_parameters": [
+                    "vlan_name"
+                ],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "vlan_name": "string"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "vlan_id"
+                ],
+                "optional_parameters": [
+                    "vlan_name"
+                ],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "vlan_name": "string"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "vlan_id"
+                ],
+                "optional_parameters": [
+                    "vlan_name"
+                ],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "vlan_name": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "vlan_id"
+                ],
+                "optional_parameters": [
+                    "vlan_name"
+                ],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "vlan_name": "string"
+                }
+            }
+        },
+        "delete": {
+            "create": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "vlan_id": "1-4094"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "assign_port": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "vlan_id"
+                ],
+                "optional_parameters": [
+                    "tagging_mode"
+                ],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "tagging_mode": [
+                        "tagged",
+                        "untagged"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "vlan_id"
+                ],
+                "optional_parameters": [
+                    "tagging_mode"
+                ],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "tagging_mode": [
+                        "tagged",
+                        "untagged"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "vlan_id"
+                ],
+                "optional_parameters": [
+                    "tagging_mode"
+                ],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "tagging_mode": [
+                        "tagged",
+                        "untagged"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "tagging_mode",
+                    "vlan_id"
+                ],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "tagging_mode": [
+                        "tagged",
+                        "untagged"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "tagging_mode": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "tagging_mode",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "tagging_mode": [
+                        "tagged",
+                        "untagged"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "tagging_mode",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "tagging_mode": [
+                        "tagged",
+                        "untagged"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "tagging_mode",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "tagging_mode": [
+                        "tagged",
+                        "untagged"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "tagging_mode",
+                    "vlan_id"
+                ],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "tagging_mode": [
+                        "tagged",
+                        "untagged"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "pvid": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "vlan_id": "1-4094"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "vlan_id": "1-4094"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "vlan_id": "1-4094"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "vlan_id"
+                ],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "port": "string-or-port-range"
+                }
+            }
+        }
+    },
+    "mac_table": {
+        "static_entry": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "macaddress",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "port": "string-or-port-range",
+                    "macaddress": "mac"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "macaddress",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "port": "string-or-port-range",
+                    "macaddress": "mac"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "macaddress",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "port": "string-or-port-range",
+                    "macaddress": "mac"
+                }
+            }
+        },
+        "delete_entry": {
+            "create": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "macaddress",
+                    "vlan_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "vlan_id": "1-4094",
+                    "port": "string-or-port-range",
+                    "macaddress": "mac"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "aging_time": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "aging_time"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "aging_time": "1-100000"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "aging_time"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "aging_time": "1-100000"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "aging_time"
+                ],
+                "constraints": {
+                    "aging_time": "1-100000"
+                }
+            }
+        }
+    },
+    "port_security": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "mac_limit": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "limit"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "limit": "1-1024"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "limit"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "limit": "1-1024"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "limit"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "limit": "1-1024"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "limit"
+                ],
+                "constraints": {
+                    "limit": "1-1024",
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "violation_action": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "violation_action"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "violation_action": [
+                        "shutdown",
+                        "restrict",
+                        "protect"
+                    ]
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "violation_action"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "violation_action": [
+                        "shutdown",
+                        "restrict",
+                        "protect"
+                    ]
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "violation_action"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "violation_action": [
+                        "shutdown",
+                        "restrict",
+                        "protect"
+                    ]
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "violation_action"
+                ],
+                "constraints": {
+                    "violation_action": [
+                        "shutdown",
+                        "restrict",
+                        "protect"
+                    ],
+                    "port": "string-or-port-range"
+                }
+            }
+        }
+    },
+    "qos": {
+        "queue": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "qnumber"
+                ],
+                "optional_parameters": [
+                    "min_bandwidth"
+                ],
+                "constraints": {
+                    "min_bandwidth": "1-100000",
+                    "qnumber": "0-7"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "min_bandwidth",
+                    "qnumber"
+                ],
+                "constraints": {
+                    "min_bandwidth": "1-100000",
+                    "qnumber": "0-7"
+                }
+            }
+        },
+        "dscp_map": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "dscp",
+                    "qnumber"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "qnumber": "0-7",
+                    "dscp": "0-63"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "dscp",
+                    "qnumber"
+                ],
+                "constraints": {
+                    "qnumber": "0-7",
+                    "dscp": "0-63"
+                }
+            }
+        },
+        "rate_limit": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "rate"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "rate": "1-1000000",
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "rate"
+                ],
+                "constraints": {
+                    "rate": "1-1000000",
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "shaping": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "rate"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "rate": "1-1000000",
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "rate"
+                ],
+                "constraints": {
+                    "rate": "1-1000000",
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "policing": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "rate"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "rate": "1-1000000",
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "rate"
+                ],
+                "constraints": {
+                    "rate": "1-1000000",
+                    "port": "string-or-port-range"
+                }
+            }
+        }
+    },
+    "acl": {
+        "create_rule": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination",
+                    "name",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "destination": "string-or-path"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination",
+                    "name",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "destination": "string-or-path"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination",
+                    "name",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "destination": "string-or-path"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination",
+                    "name",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "destination": "string-or-path"
+                }
+            }
+        },
+        "delete_rule": {
+            "create": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "name"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "apply_acl": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "name"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "name"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "name"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "name"
+                ],
+                "optional_parameters": [
+                    "port"
+                ],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            }
+        }
+    },
+    "traffic_control": {
+        "storm_control": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "rate"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "rate": "1-1000000",
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "rate"
+                ],
+                "constraints": {
+                    "rate": "1-1000000",
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "null_scan_filter": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "null_scan_filter"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "null_scan_filter": [
+                        "enable",
+                        "disable"
+                    ]
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "null_scan_filter"
+                ],
+                "constraints": {
+                    "null_scan_filter": [
+                        "enable",
+                        "disable"
+                    ]
+                }
+            }
+        },
+        "broadcast_limit": {
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "rate"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "rate": "1-1000000",
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "rate"
+                ],
+                "constraints": {
+                    "rate": "1-1000000",
+                    "port": "string-or-port-range"
+                }
+            }
+        }
+    },
+    "lldp": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "port"
+                ],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "port"
+                ],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "port"
+                ],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "port"
+                ],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "port"
+                ],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "tlv": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "tlv_type"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "tlv_type"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "tlv_type"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "tlv_type"
+                ],
+                "constraints": {}
+            }
+        }
+    },
+    "lldp_med": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "policy": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "policy_name"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "policy_name": "string"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "policy_name"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "policy_name": "string"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "policy_name"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "policy_name": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "policy_name"
+                ],
+                "constraints": {
+                    "policy_name": "string"
+                }
+            }
+        }
+    },
+    "spanning_tree": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "priority": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "priority"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "priority": "0-61440"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "priority"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "priority": "0-61440"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "priority"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "priority": "0-61440"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "priority"
+                ],
+                "constraints": {
+                    "priority": "0-61440"
+                }
+            }
+        }
+    },
+    "lacp": {
+        "create_lag": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "lag_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "lag_id": "1-64"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "lag_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "lag_id": "1-64"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "lag_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "lag_id": "1-64"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "lag_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "lag_id": "1-64"
+                }
+            }
+        },
+        "delete_lag": {
+            "create": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "lag_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "lag_id": "1-64"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "add_port": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "lag_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "lag_id": "1-64"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "lag_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "lag_id": "1-64"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "lag_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "lag_id": "1-64"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "lag_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "lag_id": "1-64"
+                }
+            }
+        },
+        "remove_port": {
+            "create": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "lag_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "lag_id": "1-64"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    },
+    "mrp": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ring_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "ring_id": "1-64"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ring_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "ring_id": "1-64"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ring_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "ring_id": "1-64"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ring_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "ring_id": "1-64"
+                }
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ring_id"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "ring_id": "1-64"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "role": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ring_id",
+                    "role"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "ring_id": "1-64"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ring_id",
+                    "role"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "ring_id": "1-64"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ring_id",
+                    "role"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "ring_id": "1-64"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ring_id"
+                ],
+                "optional_parameters": [
+                    "role"
+                ],
+                "constraints": {
+                    "role": [
+                        "admin",
+                        "operator",
+                        "guest",
+                        "read-only"
+                    ],
+                    "ring_id": "1-64"
+                }
+            }
+        }
+    },
+    "hsr": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "supervision": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            }
+        }
+    },
+    "prp": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "supervision": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "protocol"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ]
+                }
+            }
+        }
+    },
+    "routing": {
+        "static_route": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination",
+                    "gateway",
+                    "netmask"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "netmask": "ipv4",
+                    "gateway": "ipv4",
+                    "destination": "string-or-path"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination",
+                    "netmask"
+                ],
+                "optional_parameters": [
+                    "gateway"
+                ],
+                "constraints": {
+                    "netmask": "ipv4",
+                    "gateway": "ipv4",
+                    "destination": "string-or-path"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination",
+                    "gateway",
+                    "netmask"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "netmask": "ipv4",
+                    "gateway": "ipv4",
+                    "destination": "string-or-path"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "destination",
+                    "gateway",
+                    "netmask"
+                ],
+                "constraints": {
+                    "netmask": "ipv4",
+                    "gateway": "ipv4",
+                    "destination": "string-or-path"
+                }
+            }
+        },
+        "default_route": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "gateway"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "gateway": "ipv4"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "gateway"
+                ],
+                "constraints": {
+                    "gateway": "ipv4"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "gateway"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "gateway": "ipv4"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "gateway"
+                ],
+                "constraints": {
+                    "gateway": "ipv4"
+                }
+            }
+        },
+        "arp": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ip_address",
+                    "macaddress"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "macaddress": "mac",
+                    "ip_address": "ipv4"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ip_address"
+                ],
+                "optional_parameters": [
+                    "macaddress"
+                ],
+                "constraints": {
+                    "ip_address": "ipv4",
+                    "macaddress": "mac"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "ip_address",
+                    "macaddress"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "macaddress": "mac",
+                    "ip_address": "ipv4"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "ip_address",
+                    "macaddress"
+                ],
+                "constraints": {
+                    "ip_address": "ipv4",
+                    "macaddress": "mac"
+                }
+            }
+        }
+    },
+    "dhcp": {
+        "server": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "pool_name"
+                ],
+                "constraints": {
+                    "pool_name": "string"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "pool_name"
+                ],
+                "constraints": {
+                    "pool_name": "string"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "pool_name"
+                ],
+                "constraints": {
+                    "pool_name": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "pool_name"
+                ],
+                "constraints": {
+                    "pool_name": "string"
+                }
+            }
+        },
+        "relay": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "server_ip"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "server_ip": "ipv4"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "server_ip"
+                ],
+                "constraints": {
+                    "server_ip": "ipv4"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "server_ip"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "server_ip": "ipv4"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "server_ip"
+                ],
+                "constraints": {
+                    "server_ip": "ipv4"
+                }
+            }
+        },
+        "snooping": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    },
+    "dns": {
+        "add_server": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            }
+        },
+        "remove_server": {
+            "create": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    },
+    "sntp": {
+        "add_server": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            }
+        },
+        "remove_server": {
+            "create": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    },
+    "syslog": {
+        "add_server": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            }
+        },
+        "remove_server": {
+            "create": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "source"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "source": "string-or-ip"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "forwarding": {
+            "create": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            }
+        }
+    },
+    "snmp": {
+        "community": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "community"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "community": "string"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "community"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "community": "string"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "community"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "community": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "community"
+                ],
+                "constraints": {
+                    "community": "string"
+                }
+            }
+        },
+        "trap": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "destination"
+                ],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            }
+        },
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    },
+    "igmp_mld": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "querier": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    },
+    "dhcp_snooping": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "trust_port": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "port"
+                ],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            }
+        }
+    },
+    "arp_inspection": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "trust_port": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "port"
+                ],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            }
+        }
+    },
+    "industrial_protocols": {
+        "profinet": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "modbus": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "goose": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "dcp": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    },
+    "monitoring": {
+        "port_mirror": {
+            "monitor": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination_port",
+                    "source_port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "destination_port": "string-or-port-range",
+                    "source_port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "destination_port",
+                    "source_port"
+                ],
+                "constraints": {
+                    "source_port": "string-or-port-range",
+                    "destination_port": "string-or-port-range"
+                }
+            }
+        },
+        "counters": {
+            "monitor": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "port"
+                ],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "logs": {
+            "monitor": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    },
+    "poe": {
+        "enable": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            }
+        },
+        "disable": {
+            "enable": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "power_limit": {
+            "enable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "power"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "power": "1-300"
+                }
+            },
+            "disable": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "power"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "power": "1-300"
+                }
+            },
+            "update": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port",
+                    "power"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "port": "string-or-port-range",
+                    "power": "1-300"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "port"
+                ],
+                "optional_parameters": [
+                    "power"
+                ],
+                "constraints": {
+                    "power": "1-300",
+                    "port": "string-or-port-range"
+                }
+            }
+        }
+    },
+    "firmware_file_mgmt": {
+        "upload": {
+            "load": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename",
+                    "protocol",
+                    "source"
+                ],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ],
+                    "filename": "string"
+                }
+            },
+            "save": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename",
+                    "protocol",
+                    "source"
+                ],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ],
+                    "filename": "string"
+                }
+            },
+            "export": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename",
+                    "protocol",
+                    "source"
+                ],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ],
+                    "filename": "string"
+                }
+            },
+            "copy": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename",
+                    "protocol",
+                    "source"
+                ],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ],
+                    "filename": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename",
+                    "protocol",
+                    "source"
+                ],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "protocol": [
+                        "hsr",
+                        "prp"
+                    ],
+                    "filename": "string"
+                }
+            }
+        },
+        "activate": {
+            "load": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "image_name"
+                ],
+                "constraints": {
+                    "image_name": "string"
+                }
+            },
+            "save": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "image_name"
+                ],
+                "constraints": {
+                    "image_name": "string"
+                }
+            },
+            "export": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "image_name"
+                ],
+                "constraints": {
+                    "image_name": "string"
+                }
+            },
+            "copy": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "image_name"
+                ],
+                "constraints": {
+                    "image_name": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "image_name"
+                ],
+                "constraints": {
+                    "image_name": "string"
+                }
+            }
+        },
+        "dual_image": {
+            "load": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "image_slot"
+                ],
+                "constraints": {
+                    "image_slot": [
+                        "primary",
+                        "secondary"
+                    ]
+                }
+            },
+            "save": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "image_slot"
+                ],
+                "constraints": {
+                    "image_slot": [
+                        "primary",
+                        "secondary"
+                    ]
+                }
+            },
+            "export": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "image_slot"
+                ],
+                "constraints": {
+                    "image_slot": [
+                        "primary",
+                        "secondary"
+                    ]
+                }
+            },
+            "copy": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "image_slot"
+                ],
+                "constraints": {
+                    "image_slot": [
+                        "primary",
+                        "secondary"
+                    ]
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "image_slot"
+                ],
+                "constraints": {
+                    "image_slot": [
+                        "primary",
+                        "secondary"
+                    ]
+                }
+            }
+        },
+        "backup": {
+            "load": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "destination"
+                ],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "save": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "destination"
+                ],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "export": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "destination"
+                ],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "copy": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "destination"
+                ],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "destination"
+                ],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            }
+        },
+        "restore": {
+            "load": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename",
+                    "source"
+                ],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "filename": "string"
+                }
+            },
+            "save": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename",
+                    "source"
+                ],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "filename": "string"
+                }
+            },
+            "export": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename",
+                    "source"
+                ],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "filename": "string"
+                }
+            },
+            "copy": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename",
+                    "source"
+                ],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "filename": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename",
+                    "source"
+                ],
+                "constraints": {
+                    "source": "string-or-ip",
+                    "filename": "string"
+                }
+            }
+        },
+        "usb_ops": {
+            "load": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename"
+                ],
+                "constraints": {
+                    "filename": "string"
+                }
+            },
+            "save": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename"
+                ],
+                "constraints": {
+                    "filename": "string"
+                }
+            },
+            "export": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename"
+                ],
+                "constraints": {
+                    "filename": "string"
+                }
+            },
+            "copy": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename"
+                ],
+                "constraints": {
+                    "filename": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [
+                    "filename"
+                ],
+                "constraints": {
+                    "filename": "string"
+                }
+            }
+        },
+        "get": {
+            "load": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "save": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "export": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "copy": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    },
+    "usb_sd": {
+        "mount": {
+            "load": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "save": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "copy": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "unmount": {
+            "load": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "save": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "copy": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "copy": {
+            "load": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "filename"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "filename": "string"
+                }
+            },
+            "save": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "filename"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "filename": "string"
+                }
+            },
+            "copy": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "filename"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "filename": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "filename"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "filename": "string"
+                }
+            }
+        },
+        "list": {
+            "load": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "save": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "copy": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    },
+    "config_mgmt": {
+        "save": {
+            "save": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "load": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "export": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "export": {
+            "save": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "load": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "export": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "destination"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "destination": "string-or-path"
+                }
+            }
+        },
+        "delete": {
+            "save": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "load": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "export": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "device",
+                    "platform",
+                    "filename"
+                ],
+                "optional_parameters": [],
+                "constraints": {
+                    "filename": "string"
+                }
+            },
+            "read": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        },
+        "get": {
+            "save": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "load": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "export": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "delete": {
+                "required_parameters": [
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            },
+            "read": {
+                "required_parameters": [
+                    "device",
+                    "platform"
+                ],
+                "optional_parameters": [],
+                "constraints": {}
+            }
+        }
+    }
+}

@@ -1,0 +1,1511 @@
+{
+    "system_mgmt": {
+        "hostname": {
+            "update": [
+                "{action} hostname {hostname} on {device}"
+            ],
+            "read": [
+                "{action} hostname {hostname} on {device}",
+                "{action} hostname on {device}"
+            ],
+            "reset": [
+                "{action} hostname {hostname} on {device}"
+            ]
+        },
+        "mgmt_ip": {
+            "update": [
+                "{action} management ip {ip_address} on {device}",
+                "{action} management ip {ip_address} with mask {netmask} on {device}"
+            ],
+            "read": [
+                "{action} management ip {ip_address} on {device}",
+                "{action} management ip {ip_address} with mask {netmask} on {device}",
+                "{action} management ip configuration on {device}"
+            ],
+            "reset": [
+                "{action} management ip {ip_address} on {device}",
+                "{action} management ip {ip_address} with mask {netmask} on {device}"
+            ]
+        },
+        "gateway": {
+            "update": [
+                "{action} default gateway {gateway} on {device}"
+            ],
+            "read": [
+                "{action} default gateway {gateway} on {device}",
+                "{action} default gateway configuration on {device}"
+            ],
+            "reset": [
+                "{action} default gateway {gateway} on {device}"
+            ]
+        },
+        "timezone": {
+            "update": [
+                "{action} timezone {timezone} on {device}"
+            ],
+            "read": [
+                "{action} timezone {timezone} on {device}",
+                "{action} timezone configuration on {device}"
+            ],
+            "reset": [
+                "{action} timezone {timezone} on {device}"
+            ]
+        },
+        "service": {
+            "update": [
+                "{action} {service_name} service on {device}"
+            ],
+            "read": [
+                "{action} {service_name} service on {device}",
+                "{action} {service_name} service status on {device}"
+            ],
+            "reset": [
+                "{action} {service_name} service on {device}"
+            ]
+        }
+    },
+    "user_mgmt": {
+        "create_user": {
+            "create": [
+                "{action} user {username} with role {role} on {device}"
+            ],
+            "delete": [
+                "{action} user {username} with role {role} on {device}"
+            ],
+            "update": [
+                "{action} user {username} with role {role} on {device}"
+            ],
+            "read": [
+                "{action} user {username} with role {role} on {device}"
+            ]
+        },
+        "delete_user": {
+            "create": [],
+            "delete": [
+                "{action} user {username} on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "password": {
+            "create": [
+                "{action} password for user {username} on {device}"
+            ],
+            "delete": [
+                "{action} password for user {username} on {device}"
+            ],
+            "update": [
+                "{action} password for user {username} on {device}"
+            ],
+            "read": [
+                "{action} password for user {username} on {device}"
+            ]
+        },
+        "role": {
+            "create": [
+                "{action} role {role} for user {username} on {device}"
+            ],
+            "delete": [
+                "{action} role {role} for user {username} on {device}"
+            ],
+            "update": [
+                "{action} role {role} for user {username} on {device}"
+            ],
+            "read": [
+                "{action} role {role} for user {username} on {device}",
+                "{action} roles on {device}"
+            ]
+        }
+    },
+    "interface": {
+        "admin_state": {
+            "update": [
+                "{action} interface on {device} port {port}"
+            ],
+            "read": [
+                "{action} interface on {device} port {port}",
+                "{action} interface status on {device} port {port}"
+            ],
+            "reset": [
+                "{action} interface on {device} port {port}"
+            ]
+        },
+        "speed": {
+            "update": [
+                "{action} speed {speed} on {device} port {port}"
+            ],
+            "read": [
+                "{action} speed {speed} on {device} port {port}",
+                "{action} speed on {device} port {port}"
+            ],
+            "reset": [
+                "{action} speed {speed} on {device} port {port}"
+            ]
+        },
+        "duplex": {
+            "update": [
+                "{action} duplex {operating_mode} on {device} port {port}"
+            ],
+            "read": [
+                "{action} duplex {operating_mode} on {device} port {port}",
+                "{action} duplex mode on {device} port {port}"
+            ],
+            "reset": [
+                "{action} duplex {operating_mode} on {device} port {port}"
+            ]
+        },
+        "mtu": {
+            "update": [
+                "{action} mtu {mtu} on {device} port {port}"
+            ],
+            "read": [
+                "{action} mtu {mtu} on {device} port {port}",
+                "{action} mtu on {device} port {port}"
+            ],
+            "reset": [
+                "{action} mtu {mtu} on {device} port {port}"
+            ]
+        },
+        "flow_control": {
+            "update": [
+                "{action} flow control on {device} port {port}"
+            ],
+            "read": [
+                "{action} flow control on {device} port {port}",
+                "{action} flow control status on {device} port {port}"
+            ],
+            "reset": [
+                "{action} flow control on {device} port {port}"
+            ]
+        },
+        "description": {
+            "update": [
+                "{action} description {description} on {device} port {port}"
+            ],
+            "read": [
+                "{action} description {description} on {device} port {port}",
+                "{action} description on {device} port {port}"
+            ],
+            "reset": [
+                "{action} description {description} on {device} port {port}"
+            ]
+        }
+    },
+    "vlan": {
+        "create": {
+            "create": [
+                "{action} vlan {vlan_id} named {vlan_name} on {device}",
+                "{action} vlan {vlan_id} on {device}"
+            ],
+            "delete": [
+                "{action} vlan {vlan_id} named {vlan_name} on {device}",
+                "{action} vlan {vlan_id} on {device}"
+            ],
+            "update": [
+                "{action} vlan {vlan_id} named {vlan_name} on {device}",
+                "{action} vlan {vlan_id} on {device}"
+            ],
+            "read": [
+                "{action} vlan {vlan_id} named {vlan_name} on {device}",
+                "{action} vlan {vlan_id} on {device}"
+            ]
+        },
+        "delete": {
+            "create": [],
+            "delete": [
+                "{action} vlan {vlan_id} on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "assign_port": {
+            "create": [
+                "{action} vlan {vlan_id} on {device} port {port}",
+                "{action} vlan {vlan_id} on {device} port {port} as {tagging_mode}"
+            ],
+            "delete": [
+                "{action} vlan {vlan_id} on {device} port {port}",
+                "{action} vlan {vlan_id} on {device} port {port} as {tagging_mode}",
+                "{action} vlan {vlan_id} membership on {device} port {port}"
+            ],
+            "update": [
+                "{action} vlan {vlan_id} on {device} port {port}",
+                "{action} vlan {vlan_id} on {device} port {port} as {tagging_mode}"
+            ],
+            "read": [
+                "{action} vlan {vlan_id} on {device} port {port}",
+                "{action} vlan {vlan_id} on {device} port {port} as {tagging_mode}",
+                "{action} vlan membership on {device} port {port}"
+            ]
+        },
+        "tagging_mode": {
+            "create": [
+                "{action} vlan {vlan_id} on {device} port {port} as {tagging_mode}"
+            ],
+            "delete": [
+                "{action} vlan {vlan_id} on {device} port {port} as {tagging_mode}"
+            ],
+            "update": [
+                "{action} vlan {vlan_id} on {device} port {port} as {tagging_mode}"
+            ],
+            "read": [
+                "{action} vlan {vlan_id} on {device} port {port} as {tagging_mode}",
+                "{action} tagging mode on {device} port {port}"
+            ]
+        },
+        "pvid": {
+            "create": [
+                "{action} pvid {vlan_id} on {device} port {port}"
+            ],
+            "delete": [
+                "{action} pvid {vlan_id} on {device} port {port}"
+            ],
+            "update": [
+                "{action} pvid {vlan_id} on {device} port {port}"
+            ],
+            "read": [
+                "{action} pvid {vlan_id} on {device} port {port}",
+                "{action} pvid on {device} port {port}"
+            ]
+        }
+    },
+    "mac_table": {
+        "static_entry": {
+            "create": [
+                "{action} static mac {macaddress} on {device} vlan {vlan_id} port {port}"
+            ],
+            "delete": [
+                "{action} static mac {macaddress} on {device} vlan {vlan_id} port {port}"
+            ],
+            "read": [
+                "{action} static mac {macaddress} on {device} vlan {vlan_id} port {port}"
+            ]
+        },
+        "delete_entry": {
+            "create": [],
+            "delete": [
+                "{action} static mac {macaddress} on {device} vlan {vlan_id} port {port}"
+            ],
+            "read": []
+        },
+        "aging_time": {
+            "create": [
+                "{action} mac aging time {aging_time} on {device}"
+            ],
+            "delete": [
+                "{action} mac aging time {aging_time} on {device}"
+            ],
+            "read": [
+                "{action} mac aging time {aging_time} on {device}",
+                "{action} mac aging time on {device}"
+            ]
+        }
+    },
+    "port_security": {
+        "enable": {
+            "enable": [
+                "{action} port security on {device} port {port}"
+            ],
+            "disable": [
+                "{action} port security on {device} port {port}"
+            ],
+            "update": [
+                "{action} port security on {device} port {port}"
+            ],
+            "read": [
+                "{action} port security on {device} port {port}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} port security on {device} port {port}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "mac_limit": {
+            "enable": [
+                "{action} port security mac limit {limit} on {device} port {port}"
+            ],
+            "disable": [
+                "{action} port security mac limit {limit} on {device} port {port}"
+            ],
+            "update": [
+                "{action} port security mac limit {limit} on {device} port {port}"
+            ],
+            "read": [
+                "{action} port security mac limit {limit} on {device} port {port}",
+                "{action} port security mac limit on {device} port {port}"
+            ]
+        },
+        "violation_action": {
+            "enable": [
+                "{action} port security violation {violation_action} on {device} port {port}"
+            ],
+            "disable": [
+                "{action} port security violation {violation_action} on {device} port {port}"
+            ],
+            "update": [
+                "{action} port security violation {violation_action} on {device} port {port}"
+            ],
+            "read": [
+                "{action} port security violation {violation_action} on {device} port {port}",
+                "{action} port security violation action on {device} port {port}"
+            ]
+        }
+    },
+    "qos": {
+        "queue": {
+            "update": [
+                "{action} qos queue {qnumber} with {min_bandwidth} on {device}",
+                "{action} qos queue {qnumber} on {device}"
+            ],
+            "read": [
+                "{action} qos queue {qnumber} with {min_bandwidth} on {device}",
+                "{action} qos queue {qnumber} on {device}",
+                "{action} qos queue information on {device}"
+            ]
+        },
+        "dscp_map": {
+            "update": [
+                "{action} dscp {dscp} to queue {qnumber} on {device}"
+            ],
+            "read": [
+                "{action} dscp {dscp} to queue {qnumber} on {device}",
+                "{action} dscp to queue mapping on {device}"
+            ]
+        },
+        "rate_limit": {
+            "update": [
+                "{action} rate limit {rate} on {device} port {port}"
+            ],
+            "read": [
+                "{action} rate limit {rate} on {device} port {port}",
+                "{action} rate limit on {device} port {port}"
+            ]
+        },
+        "shaping": {
+            "update": [
+                "{action} traffic shaping {rate} on {device} port {port}"
+            ],
+            "read": [
+                "{action} traffic shaping {rate} on {device} port {port}",
+                "{action} traffic shaping on {device} port {port}"
+            ]
+        },
+        "policing": {
+            "update": [
+                "{action} policing {rate} on {device} port {port}"
+            ],
+            "read": [
+                "{action} policing {rate} on {device} port {port}",
+                "{action} policing on {device} port {port}"
+            ]
+        }
+    },
+    "acl": {
+        "create_rule": {
+            "create": [
+                "{action} access control list {name} from {source} to {destination}",
+                "{action} acl rule {name} from {source} to {destination} on {device}"
+            ],
+            "delete": [
+                "{action} access control list {name} from {source} to {destination}",
+                "{action} acl rule {name} from {source} to {destination} on {device}"
+            ],
+            "update": [
+                "{action} access control list {name} from {source} to {destination}",
+                "{action} acl rule {name} from {source} to {destination} on {device}"
+            ],
+            "read": [
+                "{action} access control list {name} from {source} to {destination}",
+                "{action} acl rule {name} from {source} to {destination} on {device}"
+            ]
+        },
+        "delete_rule": {
+            "create": [],
+            "delete": [
+                "{action} acl rule {name} on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "apply_acl": {
+            "create": [
+                "{action} acl {name} on {device} port {port}"
+            ],
+            "delete": [
+                "{action} acl {name} on {device} port {port}",
+                "{action} acl {name} on {device} port {port}"
+            ],
+            "update": [
+                "{action} acl {name} on {device} port {port}"
+            ],
+            "read": [
+                "{action} acl {name} on {device} port {port}",
+                "{action} acl {name} usage on {device}"
+            ]
+        }
+    },
+    "traffic_control": {
+        "storm_control": {
+            "update": [
+                "{action} storm control {rate} on {device} port {port}"
+            ],
+            "read": [
+                "{action} storm control {rate} on {device} port {port}",
+                "{action} storm control on {device} port {port}"
+            ]
+        },
+        "null_scan_filter": {
+            "update": [
+                "{action} trafficcontrol with activate {null_scan_filter} function on {device}"
+            ],
+            "read": [
+                "{action} trafficcontrol with activate {null_scan_filter} function on {device}",
+                "{action} trafficcontrol configuration on {device}"
+            ]
+        },
+        "broadcast_limit": {
+            "update": [
+                "{action} broadcast limit {rate} on {device} port {port}"
+            ],
+            "read": [
+                "{action} broadcast limit {rate} on {device} port {port}",
+                "{action} broadcast limit on {device} port {port}"
+            ]
+        }
+    },
+    "lldp": {
+        "enable": {
+            "enable": [
+                "{action} lldp on {device}",
+                "{action} lldp on {device} port {port}"
+            ],
+            "disable": [
+                "{action} lldp on {device}",
+                "{action} lldp on {device} port {port}"
+            ],
+            "update": [
+                "{action} lldp on {device}",
+                "{action} lldp on {device} port {port}"
+            ],
+            "read": [
+                "{action} lldp on {device}",
+                "{action} lldp on {device} port {port}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} lldp on {device}",
+                "{action} lldp on {device} port {port}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "tlv": {
+            "enable": [
+                "{action} lldp tlv {tlv_type} on {device}"
+            ],
+            "disable": [
+                "{action} lldp tlv {tlv_type} on {device}"
+            ],
+            "update": [
+                "{action} lldp tlv {tlv_type} on {device}"
+            ],
+            "read": [
+                "{action} lldp tlv {tlv_type} on {device}",
+                "{action} lldp tlv configuration on {device}"
+            ]
+        }
+    },
+    "lldp_med": {
+        "enable": {
+            "enable": [
+                "{action} lldp-med on {device}"
+            ],
+            "disable": [
+                "{action} lldp-med on {device}"
+            ],
+            "update": [
+                "{action} lldp-med on {device}"
+            ],
+            "read": [
+                "{action} lldp-med on {device}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} lldp-med on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "policy": {
+            "enable": [
+                "{action} lldp-med policy {policy_name} on {device}"
+            ],
+            "disable": [
+                "{action} lldp-med policy {policy_name} on {device}"
+            ],
+            "update": [
+                "{action} lldp-med policy {policy_name} on {device}"
+            ],
+            "read": [
+                "{action} lldp-med policy {policy_name} on {device}",
+                "{action} lldp-med policy on {device}"
+            ]
+        }
+    },
+    "spanning_tree": {
+        "enable": {
+            "enable": [
+                "{action} spanning tree on {device}"
+            ],
+            "disable": [
+                "{action} spanning tree on {device}"
+            ],
+            "update": [
+                "{action} spanning tree on {device}"
+            ],
+            "read": [
+                "{action} spanning tree on {device}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} spanning tree on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "priority": {
+            "enable": [
+                "{action} spanning tree priority {priority} on {device}"
+            ],
+            "disable": [
+                "{action} spanning tree priority {priority} on {device}"
+            ],
+            "update": [
+                "{action} spanning tree priority {priority} on {device}"
+            ],
+            "read": [
+                "{action} spanning tree priority {priority} on {device}",
+                "{action} spanning tree priority on {device}"
+            ]
+        }
+    },
+    "lacp": {
+        "create_lag": {
+            "create": [
+                "{action} lag {lag_id} on {device}"
+            ],
+            "delete": [
+                "{action} lag {lag_id} on {device}"
+            ],
+            "update": [
+                "{action} lag {lag_id} on {device}"
+            ],
+            "read": [
+                "{action} lag {lag_id} on {device}"
+            ]
+        },
+        "delete_lag": {
+            "create": [],
+            "delete": [
+                "{action} lag {lag_id} on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "add_port": {
+            "create": [
+                "{action} lag {lag_id} add port {port} on {device}"
+            ],
+            "delete": [
+                "{action} lag {lag_id} add port {port} on {device}"
+            ],
+            "update": [
+                "{action} lag {lag_id} add port {port} on {device}"
+            ],
+            "read": [
+                "{action} lag {lag_id} add port {port} on {device}"
+            ]
+        },
+        "remove_port": {
+            "create": [],
+            "delete": [
+                "{action} lag {lag_id} remove port {port} on {device}"
+            ],
+            "update": [],
+            "read": []
+        }
+    },
+    "mrp": {
+        "enable": {
+            "enable": [
+                "{action} mrp ring {ring_id} on {device}"
+            ],
+            "disable": [
+                "{action} mrp ring {ring_id} on {device}"
+            ],
+            "update": [
+                "{action} mrp ring {ring_id} on {device}"
+            ],
+            "read": [
+                "{action} mrp ring {ring_id} on {device}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} mrp ring {ring_id} on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "role": {
+            "enable": [
+                "{action} mrp ring {ring_id} role {role} on {device}"
+            ],
+            "disable": [
+                "{action} mrp ring {ring_id} role {role} on {device}"
+            ],
+            "update": [
+                "{action} mrp ring {ring_id} role {role} on {device}"
+            ],
+            "read": [
+                "{action} mrp ring {ring_id} role {role} on {device}",
+                "{action} mrp ring {ring_id} role on {device}"
+            ]
+        }
+    },
+    "hsr": {
+        "enable": {
+            "enable": [
+                "{action} {protocol} on {device}"
+            ],
+            "disable": [
+                "{action} {protocol} on {device}"
+            ],
+            "read": [
+                "{action} {protocol} on {device}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} {protocol} on {device}"
+            ],
+            "read": []
+        },
+        "supervision": {
+            "enable": [
+                "{action} {protocol} supervision on {device}"
+            ],
+            "disable": [
+                "{action} {protocol} supervision on {device}"
+            ],
+            "read": [
+                "{action} {protocol} supervision on {device}",
+                "{action} {protocol} supervision on {device}"
+            ]
+        }
+    },
+    "prp": {
+        "enable": {
+            "enable": [
+                "{action} {protocol} on {device}"
+            ],
+            "disable": [
+                "{action} {protocol} on {device}"
+            ],
+            "read": [
+                "{action} {protocol} on {device}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} {protocol} on {device}"
+            ],
+            "read": []
+        },
+        "supervision": {
+            "enable": [
+                "{action} {protocol} supervision on {device}"
+            ],
+            "disable": [
+                "{action} {protocol} supervision on {device}"
+            ],
+            "read": [
+                "{action} {protocol} supervision on {device}",
+                "{action} {protocol} supervision on {device}"
+            ]
+        }
+    },
+    "routing": {
+        "static_route": {
+            "create": [
+                "{action} static route {destination} {netmask} via {gateway} on {device}"
+            ],
+            "delete": [
+                "{action} static route {destination} {netmask} via {gateway} on {device}",
+                "{action} static route {destination} {netmask} on {device}"
+            ],
+            "update": [
+                "{action} static route {destination} {netmask} via {gateway} on {device}"
+            ],
+            "read": [
+                "{action} static route {destination} {netmask} via {gateway} on {device}",
+                "{action} static routes on {device}"
+            ]
+        },
+        "default_route": {
+            "create": [
+                "{action} default route via {gateway} on {device}"
+            ],
+            "delete": [
+                "{action} default route via {gateway} on {device}",
+                "{action} default route on {device}"
+            ],
+            "update": [
+                "{action} default route via {gateway} on {device}"
+            ],
+            "read": [
+                "{action} default route via {gateway} on {device}",
+                "{action} default route on {device}"
+            ]
+        },
+        "arp": {
+            "create": [
+                "{action} static arp {ip_address} {macaddress} on {device}"
+            ],
+            "delete": [
+                "{action} static arp {ip_address} {macaddress} on {device}",
+                "{action} static arp {ip_address} on {device}"
+            ],
+            "update": [
+                "{action} static arp {ip_address} {macaddress} on {device}"
+            ],
+            "read": [
+                "{action} static arp {ip_address} {macaddress} on {device}",
+                "{action} arp table on {device}"
+            ]
+        }
+    },
+    "dhcp": {
+        "server": {
+            "enable": [
+                "{action} dhcp server on {device}",
+                "{action} dhcp pool {pool_name} on {device}"
+            ],
+            "disable": [
+                "{action} dhcp server on {device}",
+                "{action} dhcp pool {pool_name} on {device}",
+                "{action} dhcp server on {device}"
+            ],
+            "update": [
+                "{action} dhcp server on {device}",
+                "{action} dhcp pool {pool_name} on {device}"
+            ],
+            "read": [
+                "{action} dhcp server on {device}",
+                "{action} dhcp pool {pool_name} on {device}",
+                "{action} dhcp server configuration on {device}"
+            ]
+        },
+        "relay": {
+            "enable": [
+                "{action} dhcp relay to {server_ip} on {device}"
+            ],
+            "disable": [
+                "{action} dhcp relay to {server_ip} on {device}",
+                "{action} dhcp relay on {device}"
+            ],
+            "update": [
+                "{action} dhcp relay to {server_ip} on {device}"
+            ],
+            "read": [
+                "{action} dhcp relay to {server_ip} on {device}",
+                "{action} dhcp relay configuration on {device}"
+            ]
+        },
+        "snooping": {
+            "enable": [
+                "{action} dhcp snooping on {device}"
+            ],
+            "disable": [
+                "{action} dhcp snooping on {device}",
+                "{action} dhcp snooping on {device}"
+            ],
+            "update": [
+                "{action} dhcp snooping on {device}"
+            ],
+            "read": [
+                "{action} dhcp snooping on {device}",
+                "{action} dhcp snooping table on {device}"
+            ]
+        }
+    },
+    "dns": {
+        "add_server": {
+            "create": [
+                "{action} dns server {source} on {device}"
+            ],
+            "delete": [
+                "{action} dns server {source} on {device}"
+            ],
+            "read": [
+                "{action} dns server {source} on {device}"
+            ]
+        },
+        "remove_server": {
+            "create": [],
+            "delete": [
+                "{action} dns server {source} on {device}"
+            ],
+            "read": []
+        }
+    },
+    "sntp": {
+        "add_server": {
+            "create": [
+                "{action} sntp server {source} on {device}"
+            ],
+            "delete": [
+                "{action} sntp server {source} on {device}"
+            ],
+            "read": [
+                "{action} sntp server {source} on {device}"
+            ]
+        },
+        "remove_server": {
+            "create": [],
+            "delete": [
+                "{action} sntp server {source} on {device}"
+            ],
+            "read": []
+        }
+    },
+    "syslog": {
+        "add_server": {
+            "create": [
+                "{action} syslog server {source} on {device}"
+            ],
+            "delete": [
+                "{action} syslog server {source} on {device}"
+            ],
+            "update": [
+                "{action} syslog server {source} on {device}"
+            ],
+            "read": [
+                "{action} syslog server {source} on {device}"
+            ]
+        },
+        "remove_server": {
+            "create": [],
+            "delete": [
+                "{action} syslog server {source} on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "forwarding": {
+            "create": [
+                "{action} syslog forwarding on {device} port {port}"
+            ],
+            "delete": [
+                "{action} syslog forwarding on {device} port {port}",
+                "{action} syslog forwarding on {device} port {port}"
+            ],
+            "update": [
+                "{action} syslog forwarding on {device} port {port}"
+            ],
+            "read": [
+                "{action} syslog forwarding on {device} port {port}",
+                "{action} syslog forwarding status on {device} port {port}"
+            ]
+        }
+    },
+    "snmp": {
+        "community": {
+            "enable": [
+                "{action} snmp community {community} on {device}"
+            ],
+            "disable": [
+                "{action} snmp community {community} on {device}",
+                "{action} snmp community {community} on {device}"
+            ],
+            "update": [
+                "{action} snmp community {community} on {device}"
+            ],
+            "read": [
+                "{action} snmp community {community} on {device}",
+                "{action} snmp communities on {device}"
+            ]
+        },
+        "trap": {
+            "enable": [
+                "{action} snmp trap receiver {destination} on {device}"
+            ],
+            "disable": [
+                "{action} snmp trap receiver {destination} on {device}",
+                "{action} snmp trap receiver {destination} on {device}"
+            ],
+            "update": [
+                "{action} snmp trap receiver {destination} on {device}"
+            ],
+            "read": [
+                "{action} snmp trap receiver {destination} on {device}",
+                "{action} snmp trap receivers on {device}"
+            ]
+        },
+        "enable": {
+            "enable": [
+                "{action} snmp on {device}"
+            ],
+            "disable": [
+                "{action} snmp on {device}"
+            ],
+            "update": [
+                "{action} snmp on {device}"
+            ],
+            "read": [
+                "{action} snmp on {device}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} snmp on {device}"
+            ],
+            "update": [],
+            "read": []
+        }
+    },
+    "igmp_mld": {
+        "enable": {
+            "enable": [
+                "{action} igmp snooping on {device}",
+                "{action} mld snooping on {device}"
+            ],
+            "disable": [
+                "{action} igmp snooping on {device}",
+                "{action} mld snooping on {device}"
+            ],
+            "update": [
+                "{action} igmp snooping on {device}",
+                "{action} mld snooping on {device}"
+            ],
+            "read": [
+                "{action} igmp snooping on {device}",
+                "{action} mld snooping on {device}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} igmp snooping on {device}",
+                "{action} mld snooping on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "querier": {
+            "enable": [
+                "{action} igmp querier on {device}"
+            ],
+            "disable": [
+                "{action} igmp querier on {device}",
+                "{action} igmp querier on {device}"
+            ],
+            "update": [
+                "{action} igmp querier on {device}"
+            ],
+            "read": [
+                "{action} igmp querier on {device}",
+                "{action} igmp querier status on {device}"
+            ]
+        }
+    },
+    "dhcp_snooping": {
+        "enable": {
+            "enable": [
+                "{action} dhcp snooping on {device}"
+            ],
+            "disable": [
+                "{action} dhcp snooping on {device}"
+            ],
+            "update": [
+                "{action} dhcp snooping on {device}"
+            ],
+            "read": [
+                "{action} dhcp snooping on {device}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} dhcp snooping on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "trust_port": {
+            "enable": [
+                "{action} dhcp snooping trust on {device} port {port}"
+            ],
+            "disable": [
+                "{action} dhcp snooping trust on {device} port {port}",
+                "{action} dhcp snooping trust on {device} port {port}"
+            ],
+            "update": [
+                "{action} dhcp snooping trust on {device} port {port}"
+            ],
+            "read": [
+                "{action} dhcp snooping trust on {device} port {port}",
+                "{action} dhcp snooping trust ports on {device}"
+            ]
+        }
+    },
+    "arp_inspection": {
+        "enable": {
+            "enable": [
+                "{action} arp inspection on {device}"
+            ],
+            "disable": [
+                "{action} arp inspection on {device}"
+            ],
+            "update": [
+                "{action} arp inspection on {device}"
+            ],
+            "read": [
+                "{action} arp inspection on {device}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} arp inspection on {device}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "trust_port": {
+            "enable": [
+                "{action} arp inspection trust on {device} port {port}"
+            ],
+            "disable": [
+                "{action} arp inspection trust on {device} port {port}",
+                "{action} arp inspection trust on {device} port {port}"
+            ],
+            "update": [
+                "{action} arp inspection trust on {device} port {port}"
+            ],
+            "read": [
+                "{action} arp inspection trust on {device} port {port}",
+                "{action} arp inspection trust ports on {device}"
+            ]
+        }
+    },
+    "industrial_protocols": {
+        "profinet": {
+            "enable": [
+                "{action} profinet on {device}"
+            ],
+            "disable": [
+                "{action} profinet on {device}",
+                "{action} profinet on {device}"
+            ],
+            "read": [
+                "{action} profinet on {device}",
+                "{action} profinet status on {device}"
+            ]
+        },
+        "modbus": {
+            "enable": [
+                "{action} modbus on {device}"
+            ],
+            "disable": [
+                "{action} modbus on {device}",
+                "{action} modbus on {device}"
+            ],
+            "read": [
+                "{action} modbus on {device}",
+                "{action} modbus status on {device}"
+            ]
+        },
+        "goose": {
+            "enable": [
+                "{action} goose on {device}"
+            ],
+            "disable": [
+                "{action} goose on {device}",
+                "{action} goose on {device}"
+            ],
+            "read": [
+                "{action} goose on {device}",
+                "{action} goose status on {device}"
+            ]
+        },
+        "dcp": {
+            "enable": [
+                "{action} dcp on {device}"
+            ],
+            "disable": [
+                "{action} dcp on {device}",
+                "{action} dcp on {device}"
+            ],
+            "read": [
+                "{action} dcp on {device}",
+                "{action} dcp status on {device}"
+            ]
+        }
+    },
+    "monitoring": {
+        "port_mirror": {
+            "monitor": [
+                "{action} port mirror from {source_port} to {destination_port} on {device}"
+            ],
+            "read": [
+                "{action} port mirror from {source_port} to {destination_port} on {device}",
+                "{action} port mirror configuration on {device}"
+            ]
+        },
+        "counters": {
+            "monitor": [],
+            "read": [
+                "{action} interface counters on {device} port {port}",
+                "{action} traffic statistics on {device}"
+            ]
+        },
+        "logs": {
+            "monitor": [],
+            "read": [
+                "{action} system logs on {device}"
+            ]
+        }
+    },
+    "poe": {
+        "enable": {
+            "enable": [
+                "{action} poe on {device} port {port}"
+            ],
+            "disable": [
+                "{action} poe on {device} port {port}"
+            ],
+            "update": [
+                "{action} poe on {device} port {port}"
+            ],
+            "read": [
+                "{action} poe on {device} port {port}"
+            ]
+        },
+        "disable": {
+            "enable": [],
+            "disable": [
+                "{action} poe on {device} port {port}"
+            ],
+            "update": [],
+            "read": []
+        },
+        "power_limit": {
+            "enable": [
+                "{action} poe power limit {power} on {device} port {port}"
+            ],
+            "disable": [
+                "{action} poe power limit {power} on {device} port {port}"
+            ],
+            "update": [
+                "{action} poe power limit {power} on {device} port {port}"
+            ],
+            "read": [
+                "{action} poe power limit {power} on {device} port {port}",
+                "{action} poe power limit on {device} port {port}"
+            ]
+        }
+    },
+    "firmware_file_mgmt": {
+        "upload": {
+            "load": [
+                "{action} firmware upload to {device} from {source}",
+                "{action} configuration upload to {device} via {protocol}",
+                "{action} upload file {filename} to {device}"
+            ],
+            "save": [
+                "{action} firmware upload to {device} from {source}",
+                "{action} configuration upload to {device} via {protocol}",
+                "{action} upload file {filename} to {device}"
+            ],
+            "export": [
+                "{action} firmware upload to {device} from {source}",
+                "{action} configuration upload to {device} via {protocol}",
+                "{action} upload file {filename} to {device}"
+            ],
+            "copy": [
+                "{action} firmware upload to {device} from {source}",
+                "{action} configuration upload to {device} via {protocol}",
+                "{action} upload file {filename} to {device}"
+            ],
+            "read": [
+                "{action} firmware upload to {device} from {source}",
+                "{action} configuration upload to {device} via {protocol}",
+                "{action} upload file {filename} to {device}"
+            ]
+        },
+        "activate": {
+            "load": [
+                "{action} firmware image {image_name} on {device}",
+                "{action} activate firmware on {device}",
+                "{action} switch boot image to {image_name} on {device}"
+            ],
+            "save": [
+                "{action} firmware image {image_name} on {device}",
+                "{action} activate firmware on {device}",
+                "{action} switch boot image to {image_name} on {device}"
+            ],
+            "export": [
+                "{action} firmware image {image_name} on {device}",
+                "{action} activate firmware on {device}",
+                "{action} switch boot image to {image_name} on {device}"
+            ],
+            "copy": [
+                "{action} firmware image {image_name} on {device}",
+                "{action} activate firmware on {device}",
+                "{action} switch boot image to {image_name} on {device}"
+            ],
+            "read": [
+                "{action} firmware image {image_name} on {device}",
+                "{action} activate firmware on {device}",
+                "{action} switch boot image to {image_name} on {device}"
+            ]
+        },
+        "dual_image": {
+            "load": [
+                "{action} primary image on {device}",
+                "{action} secondary image on {device}",
+                "{action} set boot preference to {image_slot} on {device}"
+            ],
+            "save": [
+                "{action} primary image on {device}",
+                "{action} secondary image on {device}",
+                "{action} set boot preference to {image_slot} on {device}"
+            ],
+            "export": [
+                "{action} primary image on {device}",
+                "{action} secondary image on {device}",
+                "{action} set boot preference to {image_slot} on {device}"
+            ],
+            "copy": [
+                "{action} primary image on {device}",
+                "{action} secondary image on {device}",
+                "{action} set boot preference to {image_slot} on {device}"
+            ],
+            "read": [
+                "{action} primary image on {device}",
+                "{action} secondary image on {device}",
+                "{action} set boot preference to {image_slot} on {device}"
+            ]
+        },
+        "backup": {
+            "load": [
+                "{action} backup configuration from {device} to {destination}",
+                "{action} save running config on {device}",
+                "{action} export configuration from {device}"
+            ],
+            "save": [
+                "{action} backup configuration from {device} to {destination}",
+                "{action} save running config on {device}",
+                "{action} export configuration from {device}"
+            ],
+            "export": [
+                "{action} backup configuration from {device} to {destination}",
+                "{action} save running config on {device}",
+                "{action} export configuration from {device}"
+            ],
+            "copy": [
+                "{action} backup configuration from {device} to {destination}",
+                "{action} save running config on {device}",
+                "{action} export configuration from {device}"
+            ],
+            "read": [
+                "{action} backup configuration from {device} to {destination}",
+                "{action} save running config on {device}",
+                "{action} export configuration from {device}"
+            ]
+        },
+        "restore": {
+            "load": [
+                "{action} restore configuration on {device} from {source}",
+                "{action} import configuration file {filename} to {device}"
+            ],
+            "save": [
+                "{action} restore configuration on {device} from {source}",
+                "{action} import configuration file {filename} to {device}"
+            ],
+            "export": [
+                "{action} restore configuration on {device} from {source}",
+                "{action} import configuration file {filename} to {device}"
+            ],
+            "copy": [
+                "{action} restore configuration on {device} from {source}",
+                "{action} import configuration file {filename} to {device}"
+            ],
+            "read": [
+                "{action} restore configuration on {device} from {source}",
+                "{action} import configuration file {filename} to {device}"
+            ]
+        },
+        "usb_ops": {
+            "load": [
+                "{action} usb file {filename} on {device}",
+                "{action} copy config to usb on {device}",
+                "{action} read file from usb on {device}"
+            ],
+            "save": [
+                "{action} usb file {filename} on {device}",
+                "{action} copy config to usb on {device}",
+                "{action} read file from usb on {device}"
+            ],
+            "export": [
+                "{action} usb file {filename} on {device}",
+                "{action} copy config to usb on {device}",
+                "{action} read file from usb on {device}"
+            ],
+            "copy": [
+                "{action} usb file {filename} on {device}",
+                "{action} copy config to usb on {device}",
+                "{action} read file from usb on {device}"
+            ],
+            "read": [
+                "{action} usb file {filename} on {device}",
+                "{action} copy config to usb on {device}",
+                "{action} read file from usb on {device}"
+            ]
+        },
+        "get": {
+            "load": [],
+            "save": [],
+            "export": [],
+            "copy": [],
+            "read": [
+                "{action} firmware version on {device}",
+                "{action} firmware image list on {device}",
+                "{action} configuration files on {device}"
+            ]
+        }
+    },
+    "usb_sd": {
+        "mount": {
+            "load": [
+                "{action} mount usb on {device}"
+            ],
+            "save": [
+                "{action} mount usb on {device}"
+            ],
+            "copy": [
+                "{action} mount usb on {device}"
+            ],
+            "read": [
+                "{action} mount usb on {device}"
+            ]
+        },
+        "unmount": {
+            "load": [],
+            "save": [],
+            "copy": [],
+            "read": []
+        },
+        "copy": {
+            "load": [
+                "{action} copy {filename} to usb on {device}",
+                "{action} copy {filename} from usb on {device}"
+            ],
+            "save": [
+                "{action} copy {filename} to usb on {device}",
+                "{action} copy {filename} from usb on {device}"
+            ],
+            "copy": [
+                "{action} copy {filename} to usb on {device}",
+                "{action} copy {filename} from usb on {device}"
+            ],
+            "read": [
+                "{action} copy {filename} to usb on {device}",
+                "{action} copy {filename} from usb on {device}"
+            ]
+        },
+        "list": {
+            "load": [],
+            "save": [],
+            "copy": [],
+            "read": [
+                "{action} usb files on {device}"
+            ]
+        }
+    },
+    "config_mgmt": {
+        "save": {
+            "save": [
+                "{action} save configuration on {device}",
+                "{action} write memory on {device}"
+            ],
+            "load": [
+                "{action} save configuration on {device}",
+                "{action} write memory on {device}"
+            ],
+            "export": [
+                "{action} save configuration on {device}",
+                "{action} write memory on {device}"
+            ],
+            "delete": [
+                "{action} save configuration on {device}",
+                "{action} write memory on {device}"
+            ],
+            "read": [
+                "{action} save configuration on {device}",
+                "{action} write memory on {device}"
+            ]
+        },
+        "export": {
+            "save": [
+                "{action} export configuration from {device} to {destination}"
+            ],
+            "load": [
+                "{action} export configuration from {device} to {destination}"
+            ],
+            "export": [
+                "{action} export configuration from {device} to {destination}"
+            ],
+            "delete": [
+                "{action} export configuration from {device} to {destination}"
+            ],
+            "read": [
+                "{action} export configuration from {device} to {destination}"
+            ]
+        },
+        "delete": {
+            "save": [],
+            "load": [],
+            "export": [],
+            "delete": [
+                "{action} delete configuration file {filename} on {device}"
+            ],
+            "read": []
+        },
+        "get": {
+            "save": [],
+            "load": [],
+            "export": [],
+            "delete": [],
+            "read": [
+                "{action} configuration files on {device}",
+                "{action} running configuration on {device}"
+            ]
+        }
+    }
+}

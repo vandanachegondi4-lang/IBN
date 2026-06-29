@@ -1,0 +1,142 @@
+=== DATA PROFILING REPORT ===
+Total samples: 5000
+
+1) Intent Distribution:
+   system_mgmt                  557 (11.14%)
+   monitoring                   351 (7.02%)
+   lldp                         286 (5.72%)
+   snmp                         267 (5.34%)
+   vlan                         249 (4.98%)
+   user_mgmt                    229 (4.58%)
+   dhcp                         164 (3.28%)
+   interface                    154 (3.08%)
+   syslog                       150 (3.00%)
+   mrp                          150 (3.00%)
+   dns                          147 (2.94%)
+   routing                      141 (2.82%)
+   spanning_tree                136 (2.72%)
+   qos                          129 (2.58%)
+   port_security                126 (2.52%)
+   poe                          125 (2.50%)
+   lldp_med                     125 (2.50%)
+   traffic_control              124 (2.48%)
+   mac_table                    123 (2.46%)
+   lacp                         119 (2.38%)
+   firmware_file_mgmt           118 (2.36%)
+   sntp                         114 (2.28%)
+   config_mgmt                  113 (2.26%)
+   hsr                          110 (2.20%)
+   prp                          106 (2.12%)
+   arp_inspection               106 (2.12%)
+   igmp_mld                     103 (2.06%)
+   dhcp_snooping                101 (2.02%)
+   acl                           99 (1.98%)
+   industrial_protocols          98 (1.96%)
+   usb_sd                        80 (1.60%)
+
+2) Sub‑Intent Distribution (Top 20):
+   monitoring           / logs                    128 (2.56%)
+   system_mgmt          / hostname                118 (2.36%)
+   monitoring           / counters                114 (2.28%)
+   system_mgmt          / mgmt_ip                 113 (2.26%)
+   system_mgmt          / timezone                111 (2.22%)
+   system_mgmt          / service                 110 (2.20%)
+   monitoring           / port_mirror             109 (2.18%)
+   lldp                 / enable                  106 (2.12%)
+   system_mgmt          / gateway                 105 (2.10%)
+   lldp                 / disable                  96 (1.92%)
+   lldp                 / tlv                      84 (1.68%)
+   dns                  / add_server               75 (1.50%)
+   dns                  / remove_server            72 (1.44%)
+   snmp                 / community                70 (1.40%)
+   snmp                 / trap                     67 (1.34%)
+   snmp                 / enable                   67 (1.34%)
+   user_mgmt            / role                     63 (1.26%)
+   snmp                 / disable                  63 (1.26%)
+   dhcp                 / snooping                 61 (1.22%)
+   sntp                 / add_server               61 (1.22%)
+
+3) Action Distribution:
+   read         1396 (27.92%)
+   disable       919 (18.38%)
+   update        881 (17.62%)
+   delete        689 (13.78%)
+   enable        399 (7.98%)
+   create        291 (5.82%)
+   reset         205 (4.10%)
+   monitor        54 (1.08%)
+   save           48 (0.96%)
+   load           44 (0.88%)
+   export         38 (0.76%)
+   copy           36 (0.72%)
+
+4) Natural Language Profiling:
+   Avg length: 7.28 tokens
+   Median length: 7.00
+   Std deviation: 2.20
+   Min length: 4
+   Max length: 17
+   Unresolved placeholders: 0 (0.00%)
+   Noise‑injected sentences: 663 (13.26%)
+
+5) Parameter Frequency (Top 30):
+   device                 5000 (100.00%) types={'str': 5000}
+   platform               5000 (100.00%) types={'dict': 5000}
+   port                   1133 (22.66%) types={'str': 1133}
+   source                  400 (8.00%) types={'str': 400}
+   vlan_id                 322 (6.44%) types={'int': 322}
+   protocol                221 (4.42%) types={'str': 221}
+   username                219 (4.38%) types={'str': 219}
+   destination             170 (3.40%) types={'str': 170}
+   gateway                 161 (3.22%) types={'str': 161}
+   role                    160 (3.20%) types={'str': 160}
+   ring_id                 150 (3.00%) types={'int': 150}
+   ip_address              148 (2.96%) types={'str': 148}
+   macaddress              122 (2.44%) types={'str': 122}
+   lag_id                  119 (2.38%) types={'int': 119}
+   rate                    113 (2.26%) types={'int': 113}
+   service_name            110 (2.20%) types={'str': 110}
+   netmask                 104 (2.08%) types={'str': 104}
+   name                     99 (1.98%) types={'str': 99}
+   hostname                 97 (1.94%) types={'str': 97}
+   timezone                 95 (1.90%) types={'str': 95}
+   destination_port         81 (1.62%) types={'str': 81}
+   source_port              81 (1.62%) types={'str': 81}
+   filename                 65 (1.30%) types={'str': 65}
+   tagging_mode             62 (1.24%) types={'str': 62}
+   community                59 (1.18%) types={'str': 59}
+   policy_name              42 (0.84%) types={'str': 42}
+   server_ip                40 (0.80%) types={'str': 40}
+   qnumber                  39 (0.78%) types={'int': 39}
+   null_scan_filter         38 (0.76%) types={'str': 38}
+   tlv_type                 32 (0.64%) types={'str': 32}
+
+6) IPv4‑like Parameters:
+   gateway                 161 (3.22%)
+   ip_address              148 (2.96%)
+   netmask                 104 (2.08%)
+   server_ip                40 (0.80%)
+
+7) Numeric Parameter Ranges:
+   vlan_id              min=1 max=4090 mean=1915.43
+   lag_id               min=1 max=64 mean=35.36
+   rate                 min=18391 max=997178 mean=520625.80
+   limit                min=2 max=62 mean=29.45
+   qnumber              min=0 max=7 mean=3.23
+   ring_id              min=1 max=64 mean=31.87
+   mtu                  min=586 max=8608 mean=4991.29
+   aging_time           min=1599 max=95930 mean=47217.81
+   priority             min=0 max=61440 mean=34133.33
+   dscp                 min=1 max=62 mean=37.48
+   power                min=6 max=30 mean=18.69
+   min_bandwidth        min=39007 max=97840 mean=70002.57
+
+8) Duplicate Analysis:
+   Unique NL sentences: 4901
+   Sentences with duplicates: 82
+   Max duplicates for a single sentence: 6
+
+9) Outlier Detection:
+   Outlier sentences (>3σ): 50
+
+=== END OF DATA PROFILING REPORT ===
