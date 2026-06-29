@@ -169,7 +169,7 @@ Defines device names, platforms, IP addresses, and available ports.
 
 **Script:** `generatedata.py`  
 **Run:** `python datafortraining/generatedata.py`  
-**Output:** `datafortraining/intent_dataset.json`
+**Output:** `datafortraining/outputs/intent_dataset.json`
 
 **Features:**
 - Platform-aware intent selection
