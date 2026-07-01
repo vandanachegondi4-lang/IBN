@@ -31,10 +31,10 @@ def convert_entry(entry):
 
     intent_type = entry["intent_type"]
     intent_action = entry["intent_action"]   # <-- USE THIS DIRECTLY
-
+    intent_sub_type = entry["intent_sub_type"]
     device = params["device"]
+    constraints = entry.get("policy", {}).get("constraints", {})
     platform = params["platform"]["id"]
-
     interface = params.get("interface")
     port = params.get("port")
     conditional = detect_conditional(natural)
@@ -57,7 +57,8 @@ def convert_entry(entry):
         "output": {
             "intent": {
                 "domain": intent_type,
-                "operation": intent_action  
+                "sub_domain": intent_sub_type,
+                "operation": intent_action 
             },
             "entities": entities,
             "parameters": parameters,
