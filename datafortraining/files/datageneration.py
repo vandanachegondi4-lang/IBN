@@ -48,7 +48,7 @@ PLATFORM_CAPABILITIES = {
         "capabilities": [
             "system_mgmt", "user_mgmt", "interface", "vlan",
             "lldp", "spanning_tree", "mrp", "routing", "dhcp",
-            "dns", "syslog", "snmp"
+            "dns", "syslog", "snmp", "firmware_file_mgmt","monitoring"
         ]
     },
     "raspberrypi": {
