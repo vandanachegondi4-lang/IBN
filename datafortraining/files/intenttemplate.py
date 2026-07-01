@@ -1,7 +1,7 @@
 import json
 
 
-OLD_INTENT_TEMPLATE_PATH = "datafortraining/outputs/oldintent_template.json"
+OLD_INTENT_TEMPLATE_PATH = "datafortraining/outputs/updated_intent_template.json"
 
 with open(OLD_INTENT_TEMPLATE_PATH, "r") as f:
     OLD_TEMPLATES = json.load(f)
@@ -65,38 +65,39 @@ INTENT_VERB_MAP = {
 # 4. Sub-intents per domain
 # ---------------------------------------------------------
 SUB_INTENTS = {
-    "system_mgmt": ["hostname", "mgmt_ip", "gateway", "timezone", "service"],
-    "user_mgmt": ["create_user", "delete_user", "password", "role"],
+    "system_mgmt": ["hostname", "mgmt_ip", "gateway", "timezone"],
+    "user_mgmt": ["user", "password", "role"],
     "interface": ["admin_state", "speed", "duplex", "mtu", "flow_control", "description"],
-    "vlan": ["create", "delete", "assign_port", "tagging_mode", "pvid"],
+    "vlan": ["vlan"],
     "mac_table": ["static_entry", "delete_entry", "aging_time"],
-    "port_security": ["enable", "disable", "mac_limit", "violation_action"],
+    "port_security": ["service", "mac_limit", "violation_action"],
     "qos": ["queue", "dscp_map", "rate_limit", "shaping", "policing"],
     "acl": ["create_rule", "delete_rule", "apply_acl"],
     "traffic_control": ["storm_control", "null_scan_filter", "broadcast_limit"],
-    "lldp": ["enable", "disable", "tlv"],
-    "lldp_med": ["enable", "disable", "policy"],
-    "spanning_tree": ["enable", "disable", "priority"],
+    "lldp": ["service", "tlv"],
+    "lldp_med": ["service", "policy"],
+    "spanning_tree": ["service", "priority"],
     "lacp": ["create_lag", "delete_lag", "add_port", "remove_port"],
-    "mrp": ["enable", "disable", "role"],
-    "hsr": ["enable", "disable", "supervision"],
-    "prp": ["enable", "disable", "supervision"],
+    "mrp": ["service", "role"],
+    "hsr": ["service", "supervision"],
+    "prp": ["service", "supervision"],
     "routing": ["static_route", "default_route", "arp"],
     "dhcp": ["server", "relay", "snooping"],
-    "dns": ["add_server", "remove_server"],
-    "sntp": ["add_server", "remove_server"],
-    "syslog": ["add_server", "remove_server", "forwarding"],
-    "snmp": ["community", "trap", "enable", "disable"],
-    "igmp_mld": ["enable", "disable", "querier"],
-    "dhcp_snooping": ["enable", "disable", "trust_port"],
-    "arp_inspection": ["enable", "disable", "trust_port"],
+    "dns": ["server"],
+    "sntp": ["server"],
+    "syslog": ["server", "forwarding"],
+    "snmp": ["community", "trap", "service"],
+    "igmp_mld": ["service", "querier"],
+    "dhcp_snooping": ["service", "trust_port"],
+    "arp_inspection": ["service", "trust_port"],
     "industrial_protocols": ["profinet", "modbus", "goose", "dcp"],
     "monitoring": ["port_mirror", "counters", "logs"],
-    "poe": ["enable", "disable", "power_limit"],
-    "firmware_file_mgmt": ["upload", "activate", "dual_image", "backup", "restore", "usb_ops", "get"],
-    "usb_sd": ["mount", "unmount", "copy", "list"],
-    "config_mgmt": ["save", "export", "delete", "get"]
+    "poe": ["service", "power_limit"],
+    "firmware_file_mgmt": ["dual_image", "service"],
+    "usb_sd": ["service"],
+    "config_mgmt": ["service"]
 }
+
 
 # ---------------------------------------------------------
 # 5. Generate NEW intent template using OLD templates
