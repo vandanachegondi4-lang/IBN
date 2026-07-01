@@ -1,7 +1,7 @@
 import json
 
 
-OLD_INTENT_TEMPLATE_PATH = "datafortraining/outputs/updated_intent_template.json"
+OLD_INTENT_TEMPLATE_PATH = "datafortraining/outputs/oldintent_template.json"
 
 with open(OLD_INTENT_TEMPLATE_PATH, "r") as f:
     OLD_TEMPLATES = json.load(f)
